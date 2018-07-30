@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Raleway;
+}
+
+/* Menu */
+
+.menu {
+  display: flex;
+  margin: auto 15px;
+}
+
+.logo {
+  font-size: 1.3em;
+  margin-right: 15px;
+}
+
+.links {
+  display: flex;
+  margin: auto 0 auto auto;
+}
+
+.links div {
+  padding-right: 15px;
+  align-items: flex-end;
+}
+
+.links a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.active {
+  font-weight: bold;
+}
+
+/* Sign Up */
+
+.suTitle {
+  text-align: center;
+
+}
+
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 10px auto;
+  align-items: center;
+}
+
+ .signUpForm div {
+   margin-bottom: 10px;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   width: 100%;
+   align-items: center;
+ }
+
+  .signUpForm label {
+    padding-bottom: 8px;
+  }
+
+  .signUpForm input {
+    width: 50%;
+  }
