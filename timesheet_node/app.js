@@ -13,6 +13,7 @@ let models = require('./models')
 // Load Input Validation //
 const validateRegisterInput = require('./validators/register');
 const validateLoginInput = require('./validators/login')
+const validateClientInput = require('./validators/addclient')
 
 // Body Parser //
 app.use(bodyParser.urlencoded({ extended : false }))
@@ -25,11 +26,11 @@ app.use(passportAuth.initialize());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
 
-// Add User //
+// ADD USER //
 
 app.post('/add-user', (req, res) => {
   const {errors,isValid} = validateRegisterInput(req.body);
@@ -82,19 +83,23 @@ app.post('/login', (req,res) => {
         const payload = { id : user.id}
 
         // Sign Token //
-        const token = jwt.encode(payload, keys.jwtSecret)
-        res.json({
-          token : 'Bearer ' + token
+        const token = jwt.sign(payload, keys.jwtSecret, {expiresIn: 3600},
+        (err,token) => {
+          res.json({
+            success: true,
+            token : 'Bearer ' + token,
+            userID : user.id
         })
-      } else {
-        errors.password = "Password incorrect"
+      }
+    )} else {
+        errors.errors.password = "Password incorrect"
         return res.status(401).json(errors)
       }
     })
   })
 })
 
-// Dashboard //
+// DASHBOARD //
 app.get(
   '/dashboard',
   passport.authenticate('jwt', { session: false }),
@@ -108,12 +113,42 @@ app.get(
 );
 
 
+// ADD CLIENTS //
 
-// GETTING USER LIST - TO DELETE//
-app.get('/users', (req,res) => {
+app.post('/addClient', (req, res) => {
+  const {errors,isValid} = validateClientInput(req.body);
+  if(!isValid) {
+    return res.status(400).json(errors);
+  }
 
-    models.User.findAll()
-      .then( products => products = res.status(200).json(products))
+  models.Client.findOne({where: {clientName : req.body.name}}).then(client => {
+    if(client) {
+      errors.name = "Client already exists"
+      return res.status(400).json(errors);
+    } else {
+
+      let newClient = {
+        clientName : req.body.name,
+        contactName : req.body.contact,
+        email : req.body.email,
+        phoneNumber : req.body.phone,
+        userID : req.body.userID
+      }
+
+      models.Client.create(newClient).then(() =>
+        models.Client.findAll()
+          .then( clients => clients = res.status(200).json(clients))
+        )
+    }
+    })
+    })
+
+// POPULATE CLIENT LIST /./
+
+app.get('/clientList', (req,res) => {
+
+    models.Client.findAll()
+      .then( clients => clients = res.status(200).json(clients))
 })
 
 
@@ -122,6 +157,15 @@ app.get('/users', (req,res) => {
 
 
 
+
+
+
+// GETTING USER LIST - TO DELETE//
+app.get('/users', (req,res) => {
+
+    models.User.findAll()
+      .then( products => products = res.status(200).json(products))
+})
 
 
 
