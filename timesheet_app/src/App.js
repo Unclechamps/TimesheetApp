@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import './index.css';
-import {Menu} from './components/Menu'
+import Menu from './components/Menu'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     return (

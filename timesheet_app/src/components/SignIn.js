@@ -16,6 +16,13 @@ class SignIn extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    if(!this.props.user && nextProps.user) {
+      this.props.history.replace('/dashboard')
+    }
+  }
+
   handleTextChange = (e) => {
     this.setState({
       user : {
@@ -25,13 +32,10 @@ class SignIn extends Component {
     })
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard")
-    }
-  }
 
   render() {
+
+
     return(
 
       <div>
@@ -59,6 +63,7 @@ class SignIn extends Component {
 const mapStateToProps = (state) => {
   return {
     users : state.users,
+    user : state.user
   }
 }
 

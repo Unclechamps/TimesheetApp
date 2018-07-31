@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import App from './App';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
@@ -11,8 +11,9 @@ import reducer from './store/reducer'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import SignInError from './components/SignInError'
-import {Dashboard} from './components/Dashboard'
+import Dashboard from './components/Dashboard'
 import {Home} from './components/Home'
+import Client from './components/Client'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -30,6 +31,7 @@ ReactDOM.render(
         <Route path = '/sign-in' component = {SignIn} />
         <Route path = '/signInError' component = {SignInError} />
         <Route path = '/dashboard' component = {Dashboard} />
+        <Route path = '/clients' component = {Client} />
         <Route path = '/' component = {Home} />
       </Switch>
     </App>

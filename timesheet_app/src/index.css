@@ -118,3 +118,87 @@ align-items: center;
 .errors p {
   color: red;
 }
+
+/* Dashboard */
+
+.dashboard {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard h1 {
+  text-align: center;
+}
+
+.dashboard p {
+  text-align: justify;
+}
+
+.dashOptions {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dashOptions button {
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 150px;
+  height: 25px;
+  background-color: inherit;
+  border-radius: 10px;
+  font-size: .80em;
+}
+
+.dashOptions a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Clients */
+
+.clientTitle {
+  text-align: center;
+}
+
+.addClientTitle {
+  text-align: center;
+}
+
+.clientForm {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clientForm div {
+  margin-right: 10px;
+}
+
+.clientForm div label {
+  padding-right: 4px;
+}
+
+.indClient {
+  display: flex;
+}
+
+.indClient ul {
+  width: 80%;
+  align-items: center;
+}
+
+.eachClient {
+  display: flex;
+  align-items: center;
+}
+
+.eachClient p,
+.eachClient button {
+  margin-left: 25px;
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
