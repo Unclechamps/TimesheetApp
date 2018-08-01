@@ -7,6 +7,8 @@ export class Home extends Component {
 
   render() {
     return (
+      <div className='welcomePage'>
       <h1>Hello World</h1>
+      </div>
     )}
   }

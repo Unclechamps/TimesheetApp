@@ -145,10 +145,10 @@ app.post('/addClient', (req, res) => {
 
 // POPULATE CLIENT LIST /./
 
-app.get('/clientList', (req,res) => {
-
-    models.Client.findAll()
-      .then( clients => clients = res.status(200).json(clients))
+app.post('/clientList', (req,res) => {
+  console.log(req.body.id)
+    models.Client.findAll({where : {userID : req.body.id}})
+      .then( clients => res.status(200).json(clients))
 })
 
 

@@ -19,7 +19,12 @@ class SignIn extends Component {
   componentWillReceiveProps(nextProps) {
     console.log(nextProps)
     if(!this.props.user && nextProps.user) {
-      this.props.history.replace('/dashboard')
+
+      let newParams = {
+        pathname : `/dashboard/${nextProps.user.id}`
+      }
+
+      this.props.history.replace(newParams)
     }
   }
 

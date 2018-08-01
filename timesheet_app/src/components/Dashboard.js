@@ -17,6 +17,7 @@ class Dashboard extends Component {
   }
 
   render(){
+
     var user = cookies.get("user")
     var user_token = cookies.get("user_token")
 

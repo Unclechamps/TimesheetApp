@@ -141,9 +141,17 @@ export const displayClientErrors = (errors) => {
 
 // DISPLAY CLIENT LIST //
 
-export const onPopulateClientListUsingThunk = () => {
+export const onPopulateClientListUsingThunk = (user) => {
+  console.log(user)
   return (dispatch) => {
-    fetch('http://localhost:3001/clientList')
+    fetch('http://localhost:3001/clientList', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify(user)
+    })
     .then(response => response.json())
     .then((json) => {
       dispatch({type : actionTypes.POPULATE_CLIENT_LIST, clients : json});

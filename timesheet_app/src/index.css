@@ -37,6 +37,12 @@ color: inherit;
 font-weight: bold;
 }
 
+/* Welcome page */
+
+.welcomePage h1 {
+  text-align: center;
+}
+
 /* Sign Up */
 
 .suTitle {
@@ -191,14 +197,36 @@ align-items: center;
   align-items: center;
 }
 
-.eachClient {
+/* Client List */
+
+.clientList {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 25px;
 }
 
-.eachClient p,
-.eachClient button {
-  margin-left: 25px;
-  margin-top: 20px;
-  margin-bottom: 16px;
+.clients {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clients tr {
+  text-align: center;
+}
+
+.clients th {
+  width: 20%;
+  text-align: center;
+}
+
+.eachClient {
+  width: 100%;
+}
+
+.eachClient td {
+  width: 20%;
+  text-align: center;
+  padding-top: 30px;
 }

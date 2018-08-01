@@ -2,44 +2,60 @@
 import React, {Component} from 'react'
 import '../index.css'
 import { connect } from 'react-redux'
+import Cookies from 'universal-cookie'
 
 import * as actionCreators from '../store/actionCreators'
+
+const cookies = new Cookies()
 
 class ClientList extends Component {
   constructor(props) {
     super(props)
+
+    this.props.authUser()
+    this.props.onPopulateClientList(this.props.loggedInUser)
   }
 
-  componentDidMount() {
-
-    this.props.onPopulateClientList()
-
+  componentWillReceiveProps(nextProps) {
+     console.log(nextProps)
+     // checks current props against incoming props. This method only runs when new props are coming in. (Sign-In)
+    if(!this.props.loggedInUser && nextProps.loggedInUser) {
+      this.props.onPopulateClientList(nextProps.loggedInUser)
+    }
   }
 
 render() {
-  console.log(this.props.user)
+
   let clients = this.props.clients.map((client,index) => {
     return (
 
-      <div className='indClient' key={index}>
-      <ul>
-        <li className='eachClient'>
-          <h3 className='clientName'>Client: {client.clientName}</h3>
-          <p className='contact'>Contact: {client.contactName}</p>
-          <p className='contactEmail'>Email: {client.email}</p>
-          <p className='contactPhone'>Phone: {client.phoneNumber}</p>
-          <input type='hidden' value={client.userID} name="userID" />
-          <button>Add projects</button>
-        </li>
-      </ul>
-      </div>
+      <tr className= "eachClient" key={index}>
+          <td className='clientName'>{client.clientName}</td>
+          <td className='contact'>{client.contactName}</td>
+          <td className='contactEmail'>{client.email}</td>
+          <td className='contactPhone'>{client.phoneNumber}</td>
+          <td><button>Projects</button></td>
+      </tr>
     )
   })
 
   return (
     <div className='clientList'>
       <h1>Current Clients: </h1>
-      {clients}
+      <table className="clients">
+      <thead>
+        <tr className="tableHeader">
+          <th>Client</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Add Project</th>
+        </tr>
+        </thead>
+        <tbody>
+            {clients}
+        </tbody>
+      </table>
     </div>
     );
   }
@@ -47,13 +63,15 @@ render() {
 
   const mapStateToProps = (state) => {
     return {
-      clients : state.clients
+      clients : state.clients,
+      loggedInUser : state.user
     }
 }
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      onPopulateClientList : () => dispatch(actionCreators.onPopulateClientListUsingThunk())
+      onPopulateClientList : (user) => dispatch(actionCreators.onPopulateClientListUsingThunk(user)),
+      authUser : () => dispatch(actionCreators.authenticateUser())
     }
 }
 
