@@ -47,6 +47,12 @@ const reducer = (state = initialState,action) => {
       client : action.client
     }
 
+    case actionTypes.DELETE_PROJECT:
+    return {
+      ...state,
+      projects : action.projects
+    }
+
     case actionTypes.ADD_CLIENT_ERROR:
     return {
       ...state,
@@ -57,6 +63,12 @@ const reducer = (state = initialState,action) => {
     return {
       ...state,
       clients : action.clients
+      }
+
+    case actionTypes.POPULATE_COMPLETE_PROJECT_LIST:
+    return {
+      ...state,
+      projects : action.projects
       }
 
     case actionTypes.ADD_PROJECT:
@@ -75,6 +87,12 @@ const reducer = (state = initialState,action) => {
       ...state,
       projects : action.projects
       }
+
+    case actionTypes.POPULATE_INDIVIDUAL_PROJECT:
+    return {
+      ...state,
+      project : action.project
+    }
 
     }
 

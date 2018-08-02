@@ -264,6 +264,8 @@ align-items: center;
   flex-direction: column;
   text-align: center;
   margin-top: 25px;
+    font-size: .85em;
+
 }
 
 .projects {
@@ -277,7 +279,7 @@ align-items: center;
 }
 
 .projects th {
-  width: 15%;
+  width: 12%;
   text-align: center;
 }
 
@@ -291,6 +293,45 @@ align-items: center;
 }
 
 .projectDesc {
-  width: 25%;
+  width: 16%;
+  text-align: justify;
+}
+
+/* COMPLETE PROJECT LIST */
+
+.projectsListProj {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 25px;
+  font-size: .85em;
+}
+
+.projectsProj {
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projectsProj tr {
+  text-align: center;
+}
+
+.projectsProj th {
+  width: 14%;
+  text-align: center;
+}
+
+.eachProjectProj {
+  width: 100%;
+}
+
+.eachProjectProj td {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.projectDescProj {
+  width: 22%;
   text-align: justify;
 }

@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     rate: DataTypes.INTEGER,
     actualHours: DataTypes.INTEGER,
     userID: DataTypes.INTEGER,
-    clientID: DataTypes.INTEGER
+    clientID: DataTypes.INTEGER,
+    clientName : DataTypes.STRING,
   }, {});
   Project.associate = function(models) {
     Project.belongsTo(models.Client, {as:'Client', foreignKey:'id'})

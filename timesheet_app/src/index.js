@@ -16,6 +16,8 @@ import {Home} from './components/Home'
 import Client from './components/Client'
 import Projects from './components/Projects'
 import ProjectsList from './components/ProjectsList'
+import ProjectsCompleteList from './components/ProjectsCompleteList'
+import IndividualProject from './components/IndividualProject'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -29,15 +31,15 @@ ReactDOM.render(
   <Provider store = {store}>
     <App>
       <Switch>
-        <Route path = '/sign-up' component = {SignUp} />
-        <Route path = '/sign-in' component = {SignIn} />
-        <Route path = '/signInError' component = {SignInError} />
-        <Route path = '/dashboard' component = {Dashboard} />
-        <Route path = '/clients' component = {Client} />
-        <Route path = '/projects/:clientID' component = {Projects} />
-        <Route path = '/projects/:clientID' component = {ProjectsList} />
-        <Route path = '/' component = {Home} />
-
+        <Route exact path = '/sign-up' component = {SignUp} />
+        <Route exact path = '/sign-in' component = {SignIn} />
+        <Route exact path = '/signInError' component = {SignInError} />
+        <Route exact path = '/dashboard' component = {Dashboard} />
+        <Route exact path = '/clients' component = {Client} />
+        <Route exact path = '/projects/:clientName/:clientID' component = {Projects} />
+        <Route exact path = '/projects/:clientName/:clientID/:projectID' component = {IndividualProject} />
+        <Route exact path = '/projects' component = {ProjectsCompleteList} />
+        <Route exact path = '/' component = {Home} />
       </Switch>
     </App>
   </Provider>

@@ -30,7 +30,7 @@ render() {
   let clients = this.props.clients.map((client,index) => {
 
     let newParams = {
-      pathname : `/projects/${client.id}`
+      pathname : `/projects/${client.clientName}/${client.id}`
     }
     return (
 

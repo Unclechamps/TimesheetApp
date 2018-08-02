@@ -4,6 +4,7 @@ import '../index.css'
 import { connect } from 'react-redux'
 import Cookies from 'universal-cookie'
 import Projects from './Projects'
+import { Link } from 'react-router-dom'
 
 import * as actionCreators from '../store/actionCreators'
 
@@ -12,24 +13,30 @@ const cookies = new Cookies()
 class ProjectsList extends Component {
   constructor(props) {
     super(props)
-
     console.log(props)
-
     this.props.authUser()
-    this.props.onPopulateProjectList(this.props.loggedInUser)
+    if(this.props.loggedInUser) {
+      this.props.onPopulateProjectList(this.props.loggedInUser, this.props.clientID)
   }
+}
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
+
      // checks current props against incoming props. This method only runs when new props are coming in. (Sign-In)
     if(!this.props.loggedInUser && nextProps.loggedInUser) {
-      this.props.onPopulateProjectList(nextProps.loggedInUser)
+      this.props.onPopulateProjectList(nextProps.loggedInUser, this.props.clientID)
     }
   }
 
 render() {
 
   let projects= this.props.projects.map((project,index) => {
+
+
+  let newParams = {
+    pathname : `/projects/${project.clientName}/${project.clientID}/${project.id}`
+  }
+
     return (
 
       <tr className= "eachProject" key={index}>
@@ -39,13 +46,15 @@ render() {
         <td className='rate'>${project.rate}</td>
         <td className='actualHours'>{project.actualHours}</td>
         <td className='totalToBeInvoiced'>TBD</td>
+        <td><Link to={newParams}>Modify</Link></td>
+        <td><button onClick={() => this.props.onDeleteProject(project.id, project.clientID)}>Delete</button></td>
       </tr>
     )
   })
 
   return (
     <div className='projectsList'>
-      <h1>Current Projects: </h1>
+      <h1>Current Projects</h1>
       <table className="projects">
       <thead>
         <tr className="tableHeader">
@@ -55,6 +64,8 @@ render() {
           <th>Rate Per Hour</th>
           <th>Actual Hours</th>
           <th>Total for project</th>
+          <th>Update</th>
+          <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -76,8 +87,9 @@ render() {
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      onPopulateProjectList : (user) => dispatch(actionCreators.onPopulateProjectListUsingThunk(user)),
-      authUser : () => dispatch(actionCreators.authenticateUser())
+      onPopulateProjectList : (user, client) => dispatch(actionCreators.onPopulateProjectListUsingThunk(user, client)),
+      authUser : () => dispatch(actionCreators.authenticateUser()),
+      onDeleteProject : (project,client) => dispatch(actionCreators.onDeleteProjectUsingThunk(project,client))
     }
 }
 

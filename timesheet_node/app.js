@@ -142,7 +142,7 @@ app.post('/addClient', (req, res) => {
             userID : req.body.userID
           },
           order : [
-            ['projectName', 'ASC']
+            ['clientName', 'ASC']
           ],
         })
       ).then(clients => res.status(200).json(clients))
@@ -187,7 +187,8 @@ app.post('/addProject', (req, res) => {
         rate : req.body.rate,
         actualHours : 0,
         userID : req.body.userID,
-        clientID : req.body.clientID
+        clientID : req.body.clientID,
+        clientName : req.body.clientName
 
       }
 
@@ -207,14 +208,45 @@ app.post('/addProject', (req, res) => {
     })
     })
 
+// DELETE PROJECT //
+
+app.post('/deleteProject', (req,res) => {
+  console.log(req.body)
+  models.Project.findOne({
+    where : {
+      id : req.body.projectID
+    }
+  })
+  .then((result) => {
+    return models.Project.destroy({
+      where : {
+        id : req.body.projectID
+      }
+    })
+  })
+    .then(() =>
+      models.Project.findAll({
+        where : {
+          clientID : req.body.clientID
+        },
+        order : [
+          ['projectName', 'ASC']
+        ],
+      })
+    )
+        .then( projects => projects = res.status(200).json(projects))
+  })
+
+
 
 // POPULATE PROJECT LIST //
 
 app.post('/projectList', (req,res) => {
-  console.log(req.body)
+
     models.Project.findAll({
       where : {
-        userID : req.body.id
+        userID : req.body.userID,
+        clientID : req.body.clientID,
       },
       order : [
         ['projectName', 'ASC']
@@ -223,7 +255,34 @@ app.post('/projectList', (req,res) => {
       .then( projects => res.status(200).json(projects))
 })
 
+// POPULATE COMPLETE PROJECT LIST //
 
+app.post('/completeProjectList', (req,res) => {
+  console.log(req.body, "Hello")
+    models.Project.findAll({
+      where : {
+        userID : req.body.id,
+      },
+      order : [
+        ['projectName', 'ASC']
+      ],
+      })
+      .then( projects => res.status(200).json(projects))
+})
+
+// INDIVIDUAL PROJECTS //
+
+// POPULATE INDIVIDUAL PROJECTS //
+
+app.post('/indiProject', (req,res) => {
+    console.log(req.body)
+    models.Project.findOne({
+      where : {
+        id : req.body.projectID
+      },
+      })
+      .then( project => res.status(200).json(project))
+})
 
 
 

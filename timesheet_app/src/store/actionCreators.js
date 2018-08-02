@@ -90,7 +90,7 @@ export const displayErrors = (errors) => {
 
 export const onLogOutUsingThunk = () => {
   return(dispatch) => {
-    console.log("testing")
+
         cookies.remove("user_token", { path: "/" })
         cookies.remove("user", { path: "/" })
         dispatch({ type : actionTypes.LOG_OUT})
@@ -190,6 +190,26 @@ export const onAddProjectUsingThunk = (project) => {
   }
 }
 
+// DELETE PROJECT //
+
+export const onDeleteProjectUsingThunk = (project,client) => {
+
+  const deleteData = {
+      clientID : client,
+      projectID : project
+  }
+  return (dispatch) => {
+    fetch('http://localhost:3001/deleteProject',{
+      method : "DELETE",
+    })
+    .then(response => response.json())
+    .then((json) => {
+      dispatch({type : actionTypes.DELETE_PROJECT, projects : json}),
+      dispatch({type : actionTypes.POPULATE_PROJECT_LIST, projects : json});
+    })
+  }
+}
+
 // DISPLAY ADD PROJECTS ERRORS //
 
 export const displayProjectErrors = (errors) => {
@@ -201,10 +221,34 @@ export const displayProjectErrors = (errors) => {
 
 // DISPLAY PROJECTS LIST //
 
-export const onPopulateProjectListUsingThunk = (user) => {
-  console.log(user)
+export const onPopulateProjectListUsingThunk = (user, client) => {
+
+  const queryData = {
+    userID : user.id,
+    clientID : client
+  }
   return (dispatch) => {
     fetch('http://localhost:3001/projectList', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify(queryData)
+    })
+    .then(response => response.json())
+    .then((json) => {
+      dispatch({type : actionTypes.POPULATE_PROJECT_LIST, projects : json});
+    })
+  }
+}
+
+//DISPLAY COMPLETE LIST OF PROJECTS
+
+export const onPopulateCompleteProjectListUsingThunk = (user) => {
+
+  return (dispatch) => {
+    fetch('http://localhost:3001/completeProjectList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -214,7 +258,31 @@ export const onPopulateProjectListUsingThunk = (user) => {
     })
     .then(response => response.json())
     .then((json) => {
-      dispatch({type : actionTypes.POPULATE_PROJECT_LIST, projects : json});
+      dispatch({type : actionTypes.POPULATE_COMPLETE_PROJECT_LIST, projects : json});
+    })
+  }
+}
+
+
+// DISPLAY INDIVIDUAL PROJECT //
+
+//DISPLAY COMPLETE LIST OF PROJECTS
+
+export const onPopulateIndividualProjectUsingThunk = (project) => {
+  console.log(project)
+  return (dispatch) => {
+    fetch('http://localhost:3001/indiProject', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify({projectID : project})
+    })
+    .then(response => response.json())
+    .then((json) => {
+      console.log(json)
+      dispatch({type : actionTypes.POPULATE_INDIVIDUAL_PROJECT, project : json});
     })
   }
 }

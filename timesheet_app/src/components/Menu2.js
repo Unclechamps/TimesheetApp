@@ -7,14 +7,7 @@ import {connect} from 'react-redux'
 
 import * as actionCreators from '../store/actionCreators'
 
-class Menu extends Component {
-
-  componentDidMount() {
-}
-  constructor(props) {
-    super(props)
-
-  }
+class Menu2 extends Component {
 
 render() {
 
@@ -23,10 +16,9 @@ render() {
       <p className="logo">Timekeeper</p>
       <div className="links">
         <div><Link to = "/">Home</Link></div>
-        <div><Link to ="/sign-up">Sign Up</Link></div>
-        <div><Link to ="/sign-in">Sign In</Link></div>
         <div><Link to ="/dashboard">Dashboard</Link></div>
-        <div><Link to = "/contact-us">Contact Us</Link></div>
+        <div><Link to = "/clients">Clients</Link></div>
+        <div><Link to = "/projects">Projects</Link></div>
         <div><Link to ="/sign-in" onClick={() => this.props.onLogOut()}>Log Out</Link></div>
       </div>
     </div>
@@ -47,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+export default connect(mapStateToProps, mapDispatchToProps)(Menu2)

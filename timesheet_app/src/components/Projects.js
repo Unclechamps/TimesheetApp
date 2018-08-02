@@ -13,11 +13,11 @@ class Project extends Component {
 
   constructor(props) {
     super(props)
-    console.log(props)
+
     this.state= {
       project : {}
     }
-
+    console.log(this.props.match.params.clientName)
     this.props.authUser()
   }
 
@@ -26,9 +26,15 @@ class Project extends Component {
       project : {
         ...this.state.project,
         [e.target.name] : e.target.value,
-        clientID : this.props.match.params.clientID
+        clientName : this.props.match.params.clientName,
+        clientID : this.props.match.params.clientID,
+
       }
     })
+  }
+
+  ComponentDidMount() {
+    console.log(this.props.match.params.clientName)
   }
 
 
@@ -45,7 +51,7 @@ class Project extends Component {
 
 
       <div>
-      <h1 className="projectTitle">Projects</h1>
+      <h1 className="projectTitle">Projects for {this.props.match.params.clientName}</h1>
       <h3 className="addProjectTitle">Add New Projects for </h3>
       <div className = "projectForm">
       <div>
@@ -68,7 +74,7 @@ class Project extends Component {
       </div>
         <AddProjectError />
       <div>
-        <ProjectsList />
+        <ProjectsList clientID={this.props.match.params.clientID} clientName={this.props.match.params.clientName}/>
       </div>
       </div>
 
