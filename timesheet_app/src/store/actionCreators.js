@@ -178,7 +178,7 @@ export const onAddProjectUsingThunk = (project) => {
     })
       .then(response => response.json())
       .then((json) => {
-        console.log(json)
+
         if(json.projectName === "Project Name is required" || json.projectDesc === "Project Description is required" || json.rate === "Project rate is required" || json.rate === "Rate input is not a number") {
           dispatch(actionCreators.displayProjectErrors(json))
         } else {
@@ -192,19 +192,25 @@ export const onAddProjectUsingThunk = (project) => {
 
 // DELETE PROJECT //
 
-export const onDeleteProjectUsingThunk = (project,client) => {
+export const onDeleteProjectUsingThunk = (project,client,user) => {
 
   const deleteData = {
       clientID : client,
       projectID : project
   }
+
   return (dispatch) => {
-    fetch('http://localhost:3001/deleteProject',{
-      method : "DELETE",
+    fetch('http://localhost:3001/deleteproject',{
+      method : 'DELETE',
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify(deleteData)
     })
     .then(response => response.json())
     .then((json) => {
-      dispatch({type : actionTypes.DELETE_PROJECT, projects : json}),
+
       dispatch({type : actionTypes.POPULATE_PROJECT_LIST, projects : json});
     })
   }

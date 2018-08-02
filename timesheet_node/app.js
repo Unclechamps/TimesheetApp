@@ -210,31 +210,18 @@ app.post('/addProject', (req, res) => {
 
 // DELETE PROJECT //
 
-app.post('/deleteProject', (req,res) => {
+app.delete('/deleteproject', (req,res) => {
   console.log(req.body)
-  models.Project.findOne({
-    where : {
-      id : req.body.projectID
-    }
-  })
-  .then((result) => {
-    return models.Project.destroy({
+  models.Project.destroy({
       where : {
         id : req.body.projectID
       }
-    })
-  })
-    .then(() =>
-      models.Project.findAll({
-        where : {
-          clientID : req.body.clientID
-        },
-        order : [
-          ['projectName', 'ASC']
-        ],
-      })
-    )
-        .then( projects => projects = res.status(200).json(projects))
+    }).then((results) => models.Project.findAll({
+        where: {
+          clientID: req.body.clientID
+        }
+    }))
+      .then( projects => projects = res.status(200).json(projects))
   })
 
 

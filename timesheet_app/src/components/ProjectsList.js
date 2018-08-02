@@ -32,7 +32,6 @@ render() {
 
   let projects= this.props.projects.map((project,index) => {
 
-
   let newParams = {
     pathname : `/projects/${project.clientName}/${project.clientID}/${project.id}`
   }
@@ -47,7 +46,7 @@ render() {
         <td className='actualHours'>{project.actualHours}</td>
         <td className='totalToBeInvoiced'>TBD</td>
         <td><Link to={newParams}>Modify</Link></td>
-        <td><button onClick={() => this.props.onDeleteProject(project.id, project.clientID)}>Delete</button></td>
+        <td><button onClick={() => this.props.onDeleteProject(project.id, project.clientID,this.props.loggedInUser)}>Delete</button></td>
       </tr>
     )
   })
@@ -80,16 +79,18 @@ render() {
   const mapStateToProps = (state) => {
     return {
       projects : state.projects,
+      project : state.project,
       loggedInUser : state.user,
       client : state.client
     }
 }
 
   const mapDispatchToProps = (dispatch) => {
+
     return {
       onPopulateProjectList : (user, client) => dispatch(actionCreators.onPopulateProjectListUsingThunk(user, client)),
       authUser : () => dispatch(actionCreators.authenticateUser()),
-      onDeleteProject : (project,client) => dispatch(actionCreators.onDeleteProjectUsingThunk(project,client))
+      onDeleteProject : (project,client,user) => dispatch(actionCreators.onDeleteProjectUsingThunk(project,client,user))
     }
 }
 
