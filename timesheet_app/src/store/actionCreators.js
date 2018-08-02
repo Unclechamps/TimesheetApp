@@ -70,7 +70,6 @@ export const authenticateUser = () => {
         })
           .then(response => response.json())
           .then((json) => {
-            console.log(json)
             dispatch({type : actionTypes.AUTH_USER, user : json})
             }
         )
@@ -118,13 +117,13 @@ export const onAddClientUsingThunk = (client) => {
     })
       .then(response => response.json())
       .then((json) => {
-        console.log(json)
         if(json.email === "Email field is required" || json.name === "Client name field is required" || json.contact === "Contact field is required") {
           dispatch(actionCreators.displayClientErrors(json))
         } else {
+          console.log(json)
         dispatch({type : actionTypes.ADD_CLIENT, client : json});
 
-        dispatch({type : actionTypes.POPULATE_CLIENT_LIST, clients : json});
+        dispatch({ type : actionTypes.POPULATE_CLIENT_LIST, clients : json});
       }
       })
   }
@@ -155,6 +154,67 @@ export const onPopulateClientListUsingThunk = (user) => {
     .then(response => response.json())
     .then((json) => {
       dispatch({type : actionTypes.POPULATE_CLIENT_LIST, clients : json});
+    })
+  }
+}
+
+// ADD PROJECTS //
+
+export const onAddProjectUsingThunk = (project) => {
+  return(dispatch) => {
+
+    var loggedInID = cookies.get("user")
+    project.userID = loggedInID
+
+    cookies.get()
+
+    fetch('http://localhost:3001/addProject', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body: JSON.stringify(project)
+    })
+      .then(response => response.json())
+      .then((json) => {
+        console.log(json)
+        if(json.projectName === "Project Name is required" || json.projectDesc === "Project Description is required" || json.rate === "Project rate is required" || json.rate === "Rate input is not a number") {
+          dispatch(actionCreators.displayProjectErrors(json))
+        } else {
+        dispatch({type : actionTypes.ADD_PROJECT, project : json});
+
+        dispatch({type : actionTypes.POPULATE_PROJECT_LIST, projects : json});
+      }
+      })
+  }
+}
+
+// DISPLAY ADD PROJECTS ERRORS //
+
+export const displayProjectErrors = (errors) => {
+  return {
+    type : actionTypes.ADD_PROJECT_ERROR,
+    errors : errors
+  }
+}
+
+// DISPLAY PROJECTS LIST //
+
+export const onPopulateProjectListUsingThunk = (user) => {
+  console.log(user)
+  return (dispatch) => {
+    fetch('http://localhost:3001/projectList', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify(user)
+    })
+    .then(response => response.json())
+    .then((json) => {
+      dispatch({type : actionTypes.POPULATE_PROJECT_LIST, projects : json});
     })
   }
 }

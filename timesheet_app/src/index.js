@@ -14,6 +14,8 @@ import SignInError from './components/SignInError'
 import Dashboard from './components/Dashboard'
 import {Home} from './components/Home'
 import Client from './components/Client'
+import Projects from './components/Projects'
+import ProjectsList from './components/ProjectsList'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -32,7 +34,10 @@ ReactDOM.render(
         <Route path = '/signInError' component = {SignInError} />
         <Route path = '/dashboard' component = {Dashboard} />
         <Route path = '/clients' component = {Client} />
+        <Route path = '/projects/:clientID' component = {Projects} />
+        <Route path = '/projects/:clientID' component = {ProjectsList} />
         <Route path = '/' component = {Home} />
+
       </Switch>
     </App>
   </Provider>

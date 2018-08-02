@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   Client.associate = function(models) {
     // associations can be defined here
     Client.belongsTo(models.User, {as:'User', foreignKey:'id'})
-    // Client.hasMany(models.Projects, {as:'Projects', foreignKey:'id'})
+    Client.hasMany(models.Project, {as:'Project', foreignKey:'id'})
   };
   return Client;
 };

@@ -4,7 +4,10 @@ const initialState = {
   users : [],
   errors : {},
   clients : [],
-  currentUser : {}
+  client : {},
+  currentUser : {},
+  projects : [],
+  project : {}
 }
 
 const reducer = (state = initialState,action) => {
@@ -40,7 +43,8 @@ const reducer = (state = initialState,action) => {
 
     case actionTypes.ADD_CLIENT:
     return {
-      ...state
+      ...state,
+      client : action.client
     }
 
     case actionTypes.ADD_CLIENT_ERROR:
@@ -53,6 +57,23 @@ const reducer = (state = initialState,action) => {
     return {
       ...state,
       clients : action.clients
+      }
+
+    case actionTypes.ADD_PROJECT:
+    return {
+      ...state
+    }
+
+    case actionTypes.ADD_PROJECT_ERROR:
+    return {
+      ...state,
+      errors : action.errors
+      }
+
+    case actionTypes.POPULATE_PROJECT_LIST:
+    return {
+      ...state,
+      projects : action.projects
       }
 
     }

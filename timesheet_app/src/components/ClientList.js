@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import '../index.css'
 import { connect } from 'react-redux'
 import Cookies from 'universal-cookie'
+import { Link } from 'react-router-dom'
 
 import * as actionCreators from '../store/actionCreators'
 
@@ -27,6 +28,10 @@ class ClientList extends Component {
 render() {
 
   let clients = this.props.clients.map((client,index) => {
+
+    let newParams = {
+      pathname : `/projects/${client.id}`
+    }
     return (
 
       <tr className= "eachClient" key={index}>
@@ -34,7 +39,7 @@ render() {
           <td className='contact'>{client.contactName}</td>
           <td className='contactEmail'>{client.email}</td>
           <td className='contactPhone'>{client.phoneNumber}</td>
-          <td><button>Projects</button></td>
+          <td><Link to={newParams}>Projects</Link></td>
       </tr>
     )
   })

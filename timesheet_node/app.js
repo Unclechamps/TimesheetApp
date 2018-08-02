@@ -14,6 +14,7 @@ let models = require('./models')
 const validateRegisterInput = require('./validators/register');
 const validateLoginInput = require('./validators/login')
 const validateClientInput = require('./validators/addclient')
+const validateProjectInput = require('./validators/addproject')
 
 // Body Parser //
 app.use(bodyParser.urlencoded({ extended : false }))
@@ -112,7 +113,7 @@ app.get(
   }
 );
 
-
+// CLIENTS //
 // ADD CLIENTS //
 
 app.post('/addClient', (req, res) => {
@@ -136,22 +137,91 @@ app.post('/addClient', (req, res) => {
       }
 
       models.Client.create(newClient).then(() =>
-        models.Client.findAll()
-          .then( clients => clients = res.status(200).json(clients))
+        models.Client.findAll({
+          where: {
+            userID : req.body.userID
+          },
+          order : [
+            ['projectName', 'ASC']
+          ],
+        })
+      ).then(clients => res.status(200).json(clients))
+    }
+    })
+    })
+
+// POPULATE CLIENT LIST //
+
+app.post('/clientList', (req,res) => {
+  console.log(req.body.id)
+    models.Client.findAll({
+      where : {
+        userID : req.body.id
+      },
+      order : [
+        ['clientName', 'ASC']
+      ],
+      })
+      .then( clients => res.status(200).json(clients))
+})
+
+// PROJECTS//
+// ADD PROJECT //
+
+app.post('/addProject', (req, res) => {
+  const {errors,isValid} = validateProjectInput(req.body);
+  if(!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  models.Project.findOne({where: {projectName : req.body.name}}).then(client => {
+    if(client) {
+      errors.name = "Project already exists"
+      return res.status(400).json(errors);
+    } else {
+
+      let newProject = {
+        projectName : req.body.projectName,
+        projectDesc : req.body.projectDesc,
+        budgetedHours : req.body.budget,
+        rate : req.body.rate,
+        actualHours : 0,
+        userID : req.body.userID,
+        clientID : req.body.clientID
+
+      }
+
+      models.Project.create(newProject).then(() =>
+        models.Project.findAll({
+          where : {
+            userID : req.body.userID,
+            clientID : req.body.clientID
+          },
+          order : [
+            ['projectName', 'ASC']
+          ],
+        })
+          .then( projects => projects = res.status(200).json(projects))
         )
     }
     })
     })
 
-// POPULATE CLIENT LIST /./
 
-app.post('/clientList', (req,res) => {
-  console.log(req.body.id)
-    models.Client.findAll({where : {userID : req.body.id}})
-      .then( clients => res.status(200).json(clients))
+// POPULATE PROJECT LIST //
+
+app.post('/projectList', (req,res) => {
+  console.log(req.body)
+    models.Project.findAll({
+      where : {
+        userID : req.body.id
+      },
+      order : [
+        ['projectName', 'ASC']
+      ],
+      })
+      .then( projects => res.status(200).json(projects))
 })
-
-
 
 
 

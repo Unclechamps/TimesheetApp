@@ -16,6 +16,8 @@ class Client extends Component {
     this.state = {
       client : {}
     }
+
+    this.props.authUser()
   }
 
   handleTextChange = (e) => {
@@ -66,12 +68,15 @@ class Client extends Component {
 const mapStateToProps = (state) => {
   return {
     clients : state.clients,
+    client : state.client
+
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddClient : (client) => dispatch(actionCreators.onAddClientUsingThunk(client))
+    onAddClient : (client) => dispatch(actionCreators.onAddClientUsingThunk(client)),
+    authUser : () => dispatch(actionCreators.authenticateUser())
   }
 }
 
