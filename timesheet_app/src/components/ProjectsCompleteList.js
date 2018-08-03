@@ -37,7 +37,8 @@ render() {
         <td className='budgetedHoursProj'>{project.budgetedHours}</td>
         <td className='rateProj'>${project.rate}</td>
         <td className='actualHoursProj'>{project.actualHours}</td>
-        <td className='totalToBeInvoicedProj'>TBD</td>
+        <td className='totalToBeInvoicedProj'>{project.totalBill}</td>
+        <td className='actualHoursProj'>{project.Status}</td>
       </tr>
     )
   })
@@ -55,6 +56,7 @@ render() {
           <th>Rate Per Hour</th>
           <th>Actual Hours</th>
           <th>Total for project</th>
+          <th>Status</th>
         </tr>
         </thead>
         <tbody>

@@ -84,7 +84,7 @@ app.post('/login', (req,res) => {
         const payload = { id : user.id}
 
         // Sign Token //
-        const token = jwt.sign(payload, keys.jwtSecret, {expiresIn: 3600},
+        const token = jwt.sign(payload, keys.jwtSecret, {expiresIn: 7200},
         (err,token) => {
           res.json({
             success: true,
@@ -297,17 +297,25 @@ app.post('/addHours', (req,res) => {
   console.log(req.body)
 
   let hours = req.body.hours;
-  let actuals = req.body.actualHours
+  let actuals = req.body.data.actualHours;
+  let budget = req.body.data.budgetedHours;
+  let rate = req.body.data.rate;
+  let status = req.body.status
 
-  models.Project.update({actualHours : (actuals) + (hours)},
+  models.Project.update({
+    actualHours : (actuals) + (hours),
+    ETC : (budget) - (actuals),
+    totalBill : (actuals + hours) * (rate),
+    Status : status
+  },
     {
       where: {
-        id : req.body.projectID
+        id : req.body.data.projectID
       }
     })
       .then((result) => models.Project.findOne({
         where : {
-          id : req.body.projectID
+          id : req.body.data.projectID
         },
         })
       .then( project => res.status(200).json(project)))
@@ -319,22 +327,27 @@ app.post('/removeHours', (req,res) => {
   console.log(req.body)
 
   let hours = req.body.hours;
-  let actuals = req.body.actualHours
+  let actuals = req.body.data.actualHours;
+  let budget = req.body.data.budgetedHours;
+  let rate = req.body.data.rate
 
-  models.Project.update({actualHours : (actuals) - (hours)},
+  models.Project.update({
+    actualHours : (actuals) + (hours),
+    ETC : (budget) - (actuals),
+    totalBill : (actuals + hours) * (rate)
+  },
     {
       where: {
-        id : req.body.projectID
+        id : req.body.data.projectID
       }
     })
       .then((result) => models.Project.findOne({
         where : {
-          id : req.body.projectID
+          id : req.body.data.projectID
         },
         })
       .then( project => res.status(200).json(project)))
 })
-
 
 // GETTING USER LIST - TO DELETE//
 app.get('/users', (req,res) => {

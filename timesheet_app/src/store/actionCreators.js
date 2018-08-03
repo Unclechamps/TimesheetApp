@@ -320,14 +320,18 @@ export const onPopulateIndividualProjectUsingThunk = (project) => {
 
 //MODIFY HOURS//
 
-export const onAddHoursUsingThunk = (hour,project,actual) => {
-  let queryData = {
-    hours : parseInt(hour),
-    projectID : project,
-    actualHours : actual
+export const onAddHoursUsingThunk = (hours, status, data) => {
+
+  console.log(hours,status, data)
+
+  let hoursToNode = {
+    hours : parseInt(hours),
+    status : status,
+    data : data,
   }
 
-  console.log(hour,project,actual)
+  console.log(hoursToNode)
+
   return(dispatch) => {
     fetch('http://localhost:3001/addHours', {
       method : "POST",
@@ -335,7 +339,7 @@ export const onAddHoursUsingThunk = (hour,project,actual) => {
         'Content-Type' : 'application/json',
         'Accept' : 'application/json'
       },
-      body : JSON.stringify(queryData)
+      body : JSON.stringify(hoursToNode, data)
     })
       .then(response => response.json())
       .then((json) => {
@@ -345,14 +349,16 @@ export const onAddHoursUsingThunk = (hour,project,actual) => {
   }
 }
 
-export const onRemoveHoursUsingThunk = (hour,project,actual) => {
-  let queryData = {
-    hours : parseInt(hour),
-    projectID : project,
-    actualHours : actual
+export const onRemoveHoursUsingThunk = (hours, data) => {
+  console.log(hours,data)
+
+  let hoursToNode = {
+    hours : parseInt(hours),
+    data : data,
   }
 
-  console.log(hour,project,actual)
+  console.log(hoursToNode)
+
   return(dispatch) => {
     fetch('http://localhost:3001/removeHours', {
       method : "POST",
@@ -360,7 +366,7 @@ export const onRemoveHoursUsingThunk = (hour,project,actual) => {
         'Content-Type' : 'application/json',
         'Accept' : 'application/json'
       },
-      body : JSON.stringify(queryData)
+      body : JSON.stringify(hoursToNode, data)
     })
       .then(response => response.json())
       .then((json) => {

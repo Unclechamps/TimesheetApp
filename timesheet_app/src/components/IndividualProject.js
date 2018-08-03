@@ -33,9 +33,21 @@ class IndividualProject extends Component {
 
 render() {
   const { project } = this.props
+
+  const dataToModify = {
+    projectID : project.id,
+    projectName : project.projectName,
+    actualHours : project.actualHours,
+    ETC : project.ETC,
+    status : project.Status,
+    totalBill : project.totalBill,
+    budgetedHours : project.budgetedHours,
+    rate : project.rate
+  }
+
   return (
     <div className='projectsList'>
-      <h1>Current Projects</h1>
+      <h1>Project: {project.projectName}</h1>
       <table className="projects">
       <thead>
         <tr className="tableHeader">
@@ -57,13 +69,13 @@ render() {
           <td className='rate'>${project.rate}</td>
           <td className='actualHours'>{project.actualHours}</td>
           <td className='etc'>{project.ETC}</td>
-          <td className='totalToBeInvoiced'>{project.totalBill}</td>
+          <td className='totalToBeInvoiced'>${project.totalBill}</td>
           <td className='projectStatus'>{project.Status}</td>
         </tr>
         </tbody>
       </table>
       <div>
-        <AddHours projectID = {project.id} actualHours = {project.actualHours}/>
+        <AddHours dataToModify={dataToModify}/>
       </div>
     </div>
     );

@@ -29,20 +29,24 @@ class AddHours extends Component {
 
 
   render() {
+
     return(
 
       <div>
-      <h3 className="addHours">Add Hours for Project</h3>
+      <h3 className="addHours">Modify Project: {this.props.dataToModify.projectName}</h3>
       <div className = "addHoursForm">
       <div className='hoursToAdd'>
         <label>Hours to add: </label>
         <input type="integer" id="hours"  onChange={this.handleTextChange} name="hours" placeholder="Hours" required />
       </div>
-      <button name="action" value="add" className="btnAdd" onClick={() => this.props.onAddHours(this.state.hour.hours, this.props.projectID,this.props.actualHours)}>Add</button>
-      <button name="action" value="remove" className="btnRemove" onClick={() => this.props.onRemoveHours(this.state.hour.hours, this.props.projectID,this.props.actualHours)}>Remove</button>
+      <div className='buttonsModify'>
+        <button name="action" value="add" className="btnAdd" onClick={() => this.props.onAddHours(this.state.hour.hours, this.state.hour.status, this.props.dataToModify)}>Add</button>
+        <button name="action" value="remove" className="btnRemove" onClick={() => this.props.onRemoveHours(this.state.hour.hours, this.state.hour.status, this.props.dataToModify)}>Remove</button>
+      </div>
+      <hr/>
       <div>
-        <label>Update status</label>
-          <select name='status'>
+        <label>Update status: </label>
+          <select onChange={this.handleTextChange} name='status' className="status">
             <option value='Not started'>Not Started</option>
             <option value='In Progress'>In Progress</option>
             <option value='Completed'>Completed</option>
@@ -65,8 +69,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     authUser : () => dispatch(actionCreators.authenticateUser()),
-    onAddHours : (hour,project,actual) => dispatch(actionCreators.onAddHoursUsingThunk(hour,project,actual)),
-    onRemoveHours : (hour,project,actual) => dispatch(actionCreators.onRemoveHoursUsingThunk(hour,project,actual))
+    onAddHours : (hours, status, data) => dispatch(actionCreators.onAddHoursUsingThunk(hours,status, data)),
+    onRemoveHours : (hours, status, data) => dispatch(actionCreators.onRemoveHoursUsingThunk(hours, status, data))
   }
 }
 
