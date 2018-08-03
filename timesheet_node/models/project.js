@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     userID: DataTypes.INTEGER,
     clientID: DataTypes.INTEGER,
     clientName : DataTypes.STRING,
+    ETC : DataTypes.INTEGER,
+    Status : DataTypes.STRING,
+    totalBill : DataTypes.INTEGER
   }, {});
   Project.associate = function(models) {
     Project.belongsTo(models.Client, {as:'Client', foreignKey:'id'})

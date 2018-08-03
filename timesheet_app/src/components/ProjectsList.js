@@ -8,8 +8,6 @@ import { Link } from 'react-router-dom'
 
 import * as actionCreators from '../store/actionCreators'
 
-const cookies = new Cookies()
-
 class ProjectsList extends Component {
   constructor(props) {
     super(props)

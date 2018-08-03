@@ -7,7 +7,8 @@ const initialState = {
   client : {},
   currentUser : {},
   projects : [],
-  project : {}
+  project : {},
+  hours : ''
 }
 
 const reducer = (state = initialState,action) => {
@@ -94,6 +95,11 @@ const reducer = (state = initialState,action) => {
       project : action.project
     }
 
+    case actionTypes.POPULATE_INDIVIDUAL_PROJECT:
+    return {
+      ...state,
+      hour : action.hour
+    }
     }
 
       return state

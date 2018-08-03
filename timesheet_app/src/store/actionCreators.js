@@ -117,7 +117,7 @@ export const onAddClientUsingThunk = (client) => {
     })
       .then(response => response.json())
       .then((json) => {
-        if(json.email === "Email field is required" || json.name === "Client name field is required" || json.contact === "Contact field is required") {
+        if(json.email === "Email is invalid" || json.email === "Email field is required" || json.name === "Client name field is required" || json.contact === "Contact field is required") {
           dispatch(actionCreators.displayClientErrors(json))
         } else {
           console.log(json)
@@ -126,6 +126,33 @@ export const onAddClientUsingThunk = (client) => {
         dispatch({ type : actionTypes.POPULATE_CLIENT_LIST, clients : json});
       }
       })
+  }
+}
+
+// DELETE CLIENTS //
+
+export const onDeleteClientUsingThunk = (client,user) => {
+
+  const deleteData = {
+    userID : user.id,
+    id : client
+  }
+
+  console.log(deleteData)
+  return (dispatch) => {
+    fetch('http://localhost:3001/deleteclient',{
+      method : 'DELETE',
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify(deleteData)
+    })
+    .then(response => response.json())
+    .then((json) => {
+
+      dispatch({type : actionTypes.POPULATE_CLIENT_LIST, clients : json});
+    })
   }
 }
 
@@ -275,7 +302,6 @@ export const onPopulateCompleteProjectListUsingThunk = (user) => {
 //DISPLAY COMPLETE LIST OF PROJECTS
 
 export const onPopulateIndividualProjectUsingThunk = (project) => {
-  console.log(project)
   return (dispatch) => {
     fetch('http://localhost:3001/indiProject', {
       method : "POST",
@@ -287,8 +313,59 @@ export const onPopulateIndividualProjectUsingThunk = (project) => {
     })
     .then(response => response.json())
     .then((json) => {
-      console.log(json)
       dispatch({type : actionTypes.POPULATE_INDIVIDUAL_PROJECT, project : json});
     })
+  }
+}
+
+//MODIFY HOURS//
+
+export const onAddHoursUsingThunk = (hour,project,actual) => {
+  let queryData = {
+    hours : parseInt(hour),
+    projectID : project,
+    actualHours : actual
+  }
+
+  console.log(hour,project,actual)
+  return(dispatch) => {
+    fetch('http://localhost:3001/addHours', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify(queryData)
+    })
+      .then(response => response.json())
+      .then((json) => {
+        console.log(json)
+        dispatch({type : actionTypes.POPULATE_INDIVIDUAL_PROJECT, project : json})
+      })
+  }
+}
+
+export const onRemoveHoursUsingThunk = (hour,project,actual) => {
+  let queryData = {
+    hours : parseInt(hour),
+    projectID : project,
+    actualHours : actual
+  }
+
+  console.log(hour,project,actual)
+  return(dispatch) => {
+    fetch('http://localhost:3001/removeHours', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify(queryData)
+    })
+      .then(response => response.json())
+      .then((json) => {
+        console.log(json)
+        dispatch({type : actionTypes.POPULATE_INDIVIDUAL_PROJECT, project : json})
+      })
   }
 }

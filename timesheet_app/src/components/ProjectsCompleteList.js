@@ -3,11 +3,8 @@ import React, {Component} from 'react'
 import '../index.css'
 import { connect } from 'react-redux'
 import Cookies from 'universal-cookie'
-import Projects from './Projects'
 
 import * as actionCreators from '../store/actionCreators'
-
-const cookies = new Cookies()
 
 class ProjectsCompleteList extends Component {
   constructor(props) {

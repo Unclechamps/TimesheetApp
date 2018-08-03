@@ -150,6 +150,23 @@ app.post('/addClient', (req, res) => {
     })
     })
 
+  // DELETE CLIENT //
+
+  app.delete('/deleteclient', (req,res) => {
+    console.log(req.body)
+    models.Client.destroy({
+        where : {
+          id : req.body.id
+        }
+      }).then((results) => models.Client.findAll({
+          where: {
+            userID: req.body.userID
+          }
+      }))
+        .then( clients => clients = res.status(200).json(clients))
+    })
+
+
 // POPULATE CLIENT LIST //
 
 app.post('/clientList', (req,res) => {
@@ -188,7 +205,10 @@ app.post('/addProject', (req, res) => {
         actualHours : 0,
         userID : req.body.userID,
         clientID : req.body.clientID,
-        clientName : req.body.clientName
+        clientName : req.body.clientName,
+        ETC : req.body.budget,
+        totalBill : 0 ,
+        Status : "Not Started"
 
       }
 
@@ -262,7 +282,7 @@ app.post('/completeProjectList', (req,res) => {
 // POPULATE INDIVIDUAL PROJECTS //
 
 app.post('/indiProject', (req,res) => {
-    console.log(req.body)
+
     models.Project.findOne({
       where : {
         id : req.body.projectID
@@ -271,9 +291,49 @@ app.post('/indiProject', (req,res) => {
       .then( project => res.status(200).json(project))
 })
 
+// ADD HOURS //
 
+app.post('/addHours', (req,res) => {
+  console.log(req.body)
 
+  let hours = req.body.hours;
+  let actuals = req.body.actualHours
 
+  models.Project.update({actualHours : (actuals) + (hours)},
+    {
+      where: {
+        id : req.body.projectID
+      }
+    })
+      .then((result) => models.Project.findOne({
+        where : {
+          id : req.body.projectID
+        },
+        })
+      .then( project => res.status(200).json(project)))
+})
+
+// REMOVE HOURS //
+
+app.post('/removeHours', (req,res) => {
+  console.log(req.body)
+
+  let hours = req.body.hours;
+  let actuals = req.body.actualHours
+
+  models.Project.update({actualHours : (actuals) - (hours)},
+    {
+      where: {
+        id : req.body.projectID
+      }
+    })
+      .then((result) => models.Project.findOne({
+        where : {
+          id : req.body.projectID
+        },
+        })
+      .then( project => res.status(200).json(project)))
+})
 
 
 // GETTING USER LIST - TO DELETE//

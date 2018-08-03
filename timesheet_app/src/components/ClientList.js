@@ -40,6 +40,7 @@ render() {
           <td className='contactEmail'>{client.email}</td>
           <td className='contactPhone'>{client.phoneNumber}</td>
           <td><Link to={newParams}>Projects</Link></td>
+          <td><button onClick={() => this.props.onDeleteClient(client.id,this.props.loggedInUser)}>Delete</button></td>
       </tr>
     )
   })
@@ -55,6 +56,7 @@ render() {
           <th>Email</th>
           <th>Phone</th>
           <th>Add Project</th>
+          <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -76,7 +78,8 @@ render() {
   const mapDispatchToProps = (dispatch) => {
     return {
       onPopulateClientList : (user) => dispatch(actionCreators.onPopulateClientListUsingThunk(user)),
-      authUser : () => dispatch(actionCreators.authenticateUser())
+      authUser : () => dispatch(actionCreators.authenticateUser()),
+      onDeleteClient : (client,user) => dispatch(actionCreators.onDeleteClientUsingThunk(client,user))
     }
 }
 

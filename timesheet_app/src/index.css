@@ -231,6 +231,10 @@ align-items: center;
   padding-top: 30px;
 }
 
+.eachClient a {
+  color: inherit;
+}
+
 /* Projects */
 
 .projectTitle {
@@ -292,6 +296,10 @@ align-items: center;
   padding-top: 30px;
 }
 
+.eachProject a {
+  color: inherit;
+}
+
 .projectDesc {
   width: 16%;
   text-align: justify;
@@ -334,4 +342,8 @@ align-items: center;
 .projectDescProj {
   width: 22%;
   text-align: justify;
+}
+
+.addHoursFormBtn {
+  display: flex;
 }

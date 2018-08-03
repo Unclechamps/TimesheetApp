@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import '../index.css'
 import { connect } from 'react-redux'
 import Cookies from 'universal-cookie'
+import AddHours from './AddHours'
 
 import * as actionCreators from '../store/actionCreators'
 
@@ -43,7 +44,9 @@ render() {
           <th>Budgeted Hours</th>
           <th>Rate Per Hour</th>
           <th>Actual Hours</th>
-          <th>Total for project</th>
+          <th>ETC</th>
+          <th>Total to Bill</th>
+          <th>Status</th>
         </tr>
         </thead>
         <tbody>
@@ -53,10 +56,15 @@ render() {
           <td className='budgetedHours'>{project.budgetedHours}</td>
           <td className='rate'>${project.rate}</td>
           <td className='actualHours'>{project.actualHours}</td>
-          <td className='totalToBeInvoiced'>TBD</td>
+          <td className='etc'>{project.ETC}</td>
+          <td className='totalToBeInvoiced'>{project.totalBill}</td>
+          <td className='projectStatus'>{project.Status}</td>
         </tr>
         </tbody>
       </table>
+      <div>
+        <AddHours projectID = {project.id} actualHours = {project.actualHours}/>
+      </div>
     </div>
     );
   }
@@ -73,7 +81,8 @@ render() {
   const mapDispatchToProps = (dispatch) => {
     return {
       onPopulateIndividualProject : (project) => dispatch(actionCreators.onPopulateIndividualProjectUsingThunk(project)),
-      authUser : () => dispatch(actionCreators.authenticateUser())
+      authUser : () => dispatch(actionCreators.authenticateUser()),
+
     }
 }
 
