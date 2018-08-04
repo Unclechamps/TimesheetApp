@@ -5,13 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     projectDesc: DataTypes.STRING,
     budgetedHours: DataTypes.INTEGER,
     rate: DataTypes.INTEGER,
-    actualHours: DataTypes.INTEGER,
+    actualHours: DataTypes.REAL(4,2),
     userID: DataTypes.INTEGER,
     clientID: DataTypes.INTEGER,
     clientName : DataTypes.STRING,
-    ETC : DataTypes.INTEGER,
+    ETC : DataTypes.REAL(4,2),
     Status : DataTypes.STRING,
-    totalBill : DataTypes.INTEGER
+    totalBill : DataTypes.REAL(4,2) 
   }, {});
   Project.associate = function(models) {
     Project.belongsTo(models.Client, {as:'Client', foreignKey:'id'})

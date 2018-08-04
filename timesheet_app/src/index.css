@@ -268,7 +268,7 @@ align-items: center;
   flex-direction: column;
   text-align: center;
   margin-top: 25px;
-    font-size: .85em;
+  font-size: .85em;
 
 }
 
@@ -379,5 +379,5 @@ hr {
 }
 
 .status {
-  margin-top: 15px;
+  margin-bottom: 15px;
 }

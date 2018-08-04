@@ -8,7 +8,8 @@ const initialState = {
   currentUser : {},
   projects : [],
   project : {},
-  hours : ''
+  hours : '',
+  completed : []
 }
 
 const reducer = (state = initialState,action) => {
@@ -95,11 +96,14 @@ const reducer = (state = initialState,action) => {
       project : action.project
     }
 
-    case actionTypes.POPULATE_INDIVIDUAL_PROJECT:
+
+    case actionTypes.POPULATE_FINISHED_LIST:
     return {
       ...state,
-      hour : action.hour
+      completed : action.completed
     }
+
+
     }
 
       return state

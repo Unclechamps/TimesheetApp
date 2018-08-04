@@ -216,7 +216,8 @@ app.post('/addProject', (req, res) => {
         models.Project.findAll({
           where : {
             userID : req.body.userID,
-            clientID : req.body.clientID
+            clientID : req.body.clientID,
+            Status : ["Not started", "In Progress"]
           },
           order : [
             ['projectName', 'ASC']
@@ -254,6 +255,7 @@ app.post('/projectList', (req,res) => {
       where : {
         userID : req.body.userID,
         clientID : req.body.clientID,
+        Status : ["Not started", "In Progress"]
       },
       order : [
         ['projectName', 'ASC']
@@ -304,7 +306,7 @@ app.post('/addHours', (req,res) => {
 
   models.Project.update({
     actualHours : (actuals) + (hours),
-    ETC : (budget) - (actuals),
+    ETC : (budget - hours) - (actuals),
     totalBill : (actuals + hours) * (rate),
     Status : status
   },
@@ -329,12 +331,14 @@ app.post('/removeHours', (req,res) => {
   let hours = req.body.hours;
   let actuals = req.body.data.actualHours;
   let budget = req.body.data.budgetedHours;
-  let rate = req.body.data.rate
+  let rate = req.body.data.rate;
+  let status = req.body.status
 
   models.Project.update({
-    actualHours : (actuals) + (hours),
-    ETC : (budget) - (actuals),
-    totalBill : (actuals + hours) * (rate)
+    actualHours : (actuals) - (hours),
+    ETC : (budget + hours) - (actuals),
+    totalBill : (actuals - hours) * (rate),
+    Status : status
   },
     {
       where: {
@@ -356,6 +360,22 @@ app.get('/users', (req,res) => {
       .then( products => products = res.status(200).json(products))
 })
 
+// POPULATE FINISHED LIST //
+
+app.post('/finishedList', (req,res) => {
+    console.log(req.body)
+    models.Project.findAll({
+      where : {
+        userID : req.body.userID,
+        clientID : req.body.clientID,
+        Status : "Completed"
+      },
+      order : [
+        ['projectName', 'ASC']
+      ],
+      })
+      .then( completed => res.status(200).json(completed))
+})
 
 
 

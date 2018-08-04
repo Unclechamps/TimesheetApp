@@ -35,15 +35,6 @@ class AddHours extends Component {
       <div>
       <h3 className="addHours">Modify Project: {this.props.dataToModify.projectName}</h3>
       <div className = "addHoursForm">
-      <div className='hoursToAdd'>
-        <label>Hours to add: </label>
-        <input type="integer" id="hours"  onChange={this.handleTextChange} name="hours" placeholder="Hours" required />
-      </div>
-      <div className='buttonsModify'>
-        <button name="action" value="add" className="btnAdd" onClick={() => this.props.onAddHours(this.state.hour.hours, this.state.hour.status, this.props.dataToModify)}>Add</button>
-        <button name="action" value="remove" className="btnRemove" onClick={() => this.props.onRemoveHours(this.state.hour.hours, this.state.hour.status, this.props.dataToModify)}>Remove</button>
-      </div>
-      <hr/>
       <div>
         <label>Update status: </label>
           <select onChange={this.handleTextChange} name='status' className="status">
@@ -52,6 +43,14 @@ class AddHours extends Component {
             <option value='Completed'>Completed</option>
           </select>
         </div>
+      <div className='hoursToAdd'>
+        <label>Hours to add: </label>
+        <input type="number" id="hours"  onChange={this.handleTextChange} name="hours" placeholder="Hours" required />
+      </div>
+      <div className='buttonsModify'>
+        <button name="action" value="add" className="btnAdd" onClick={() => this.props.onAddHours(this.state.hour.hours, this.state.hour.status, this.props.dataToModify)}>Add</button>
+        <button name="action" value="remove" className="btnRemove" onClick={() => this.props.onRemoveHours(this.state.hour.hours, this.state.hour.status, this.props.dataToModify)}>Remove</button>
+      </div>
       </div>
       </div>
 

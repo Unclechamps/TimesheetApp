@@ -325,7 +325,7 @@ export const onAddHoursUsingThunk = (hours, status, data) => {
   console.log(hours,status, data)
 
   let hoursToNode = {
-    hours : parseInt(hours),
+    hours : parseFloat(hours),
     status : status,
     data : data,
   }
@@ -349,11 +349,13 @@ export const onAddHoursUsingThunk = (hours, status, data) => {
   }
 }
 
-export const onRemoveHoursUsingThunk = (hours, data) => {
-  console.log(hours,data)
+export const onRemoveHoursUsingThunk = (hours, status, data) => {
+
+  console.log(hours,status, data)
 
   let hoursToNode = {
-    hours : parseInt(hours),
+    hours : parseFloat(hours),
+    status : status,
     data : data,
   }
 
@@ -373,5 +375,29 @@ export const onRemoveHoursUsingThunk = (hours, data) => {
         console.log(json)
         dispatch({type : actionTypes.POPULATE_INDIVIDUAL_PROJECT, project : json})
       })
+  }
+}
+
+// COMPLETED PROJECTS //
+
+export const onPopulateFinishedListUsingThunk = (user, client) => {
+
+  const queryData = {
+    userID : user.id,
+    clientID : client
+    }
+  return (dispatch) => {
+    fetch('http://localhost:3001/finishedList', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify(queryData)
+    })
+    .then(response => response.json())
+    .then((json) => {
+      dispatch({type : actionTypes.POPULATE_FINISHED_LIST, completed : json});
+    })
   }
 }

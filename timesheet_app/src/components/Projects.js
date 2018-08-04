@@ -4,6 +4,7 @@ import '../index.css'
 import {connect} from 'react-redux'
 import AddProjectError from './AddProjectError'
 import ProjectsList from './ProjectsList'
+import CompletedProjects from './CompletedProjects'
 import Cookies from 'universal-cookie'
 import * as actionCreators from '../store/actionCreators'
 
@@ -75,6 +76,9 @@ class Project extends Component {
         <AddProjectError />
       <div>
         <ProjectsList clientID={this.props.match.params.clientID} clientName={this.props.match.params.clientName}/>
+      </div>
+      <div>
+        <CompletedProjects clientID={this.props.match.params.clientID} clientName={this.props.match.params.clientName}/>
       </div>
       </div>
 
