@@ -217,7 +217,7 @@ app.post('/addProject', (req, res) => {
           where : {
             userID : req.body.userID,
             clientID : req.body.clientID,
-            Status : ["Not started", "In Progress"]
+            Status : ["Not Started", "In Progress"]
           },
           order : [
             ['projectName', 'ASC']
@@ -255,7 +255,7 @@ app.post('/projectList', (req,res) => {
       where : {
         userID : req.body.userID,
         clientID : req.body.clientID,
-        Status : ["Not started", "In Progress"]
+        Status : ["Not Started", "In Progress"]
       },
       order : [
         ['projectName', 'ASC']
@@ -273,7 +273,7 @@ app.post('/completeProjectList', (req,res) => {
         userID : req.body.id,
       },
       order : [
-        ['projectName', 'ASC']
+        ['clientName', 'ASC']
       ],
       })
       .then( projects => res.status(200).json(projects))
@@ -377,7 +377,17 @@ app.post('/finishedList', (req,res) => {
       .then( completed => res.status(200).json(completed))
 })
 
+// INVOICE //
 
+app.post('/invoice', (req,res) => {
+    console.log(req.body)
+    models.Project.findOne({
+      where : {
+        id : req.body.projectID,
+      },
+      })
+      .then( invoice => res.status(200).json(invoice))
+})
 
 
 

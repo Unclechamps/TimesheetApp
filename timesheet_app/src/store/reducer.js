@@ -9,7 +9,8 @@ const initialState = {
   projects : [],
   project : {},
   hours : '',
-  completed : []
+  completed : [],
+  invoice : {}
 }
 
 const reducer = (state = initialState,action) => {
@@ -101,6 +102,12 @@ const reducer = (state = initialState,action) => {
     return {
       ...state,
       completed : action.completed
+    }
+
+    case actionTypes.POPULATE_INVOICE:
+    return {
+      ...state,
+      invoice : action.invoice
     }
 
 

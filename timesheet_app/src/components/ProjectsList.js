@@ -61,7 +61,7 @@ render() {
           <th>Budgeted Hours</th>
           <th>Rate Per Hour</th>
           <th>Actual Hours</th>
-          <th>Total for project</th>
+          <th>Total $ for project</th>
           <th>Status</th>
           <th>Update</th>
           <th>Delete</th>

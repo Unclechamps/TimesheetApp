@@ -42,7 +42,7 @@ render() {
         <td className='budgetedHours'>{completed.budgetedHours}</td>
         <td className='rate'>${completed.rate}</td>
         <td className='actualHours'>{completed.actualHours}</td>
-        <td className='totalToBeInvoiced'>{completed.totalBill}</td>
+        <td className='totalToBeInvoiced'>${completed.totalBill}</td>
         <td className='status'>{completed.Status}</td>
         <td><Link to={newParams}>Invoice</Link></td>
         <td><button onClick={() => this.props.onDeleteProject(completed.id, completed.clientID,this.props.loggedInUser)}>Delete</button></td>

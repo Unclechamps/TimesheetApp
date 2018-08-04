@@ -299,7 +299,7 @@ export const onPopulateCompleteProjectListUsingThunk = (user) => {
 
 // DISPLAY INDIVIDUAL PROJECT //
 
-//DISPLAY COMPLETE LIST OF PROJECTS
+// DISPLAY INDIVIDUAL PROJECT //
 
 export const onPopulateIndividualProjectUsingThunk = (project) => {
   return (dispatch) => {
@@ -398,6 +398,26 @@ export const onPopulateFinishedListUsingThunk = (user, client) => {
     .then(response => response.json())
     .then((json) => {
       dispatch({type : actionTypes.POPULATE_FINISHED_LIST, completed : json});
+    })
+  }
+}
+
+// POPULATE INVOICE //
+
+export const onPopulateInvoiceUsingThunk = (project) => {
+  return (dispatch) => {
+    fetch('http://localhost:3001/invoice', {
+      method : "POST",
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body : JSON.stringify({projectID : project})
+    })
+    .then(response => response.json())
+    .then((json) => {
+      
+      dispatch({type : actionTypes.POPULATE_INVOICE, invoice : json});
     })
   }
 }

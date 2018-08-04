@@ -44,7 +44,7 @@ class AddHours extends Component {
           </select>
         </div>
       <div className='hoursToAdd'>
-        <label>Hours to add: </label>
+        <label>Hours to modify: </label>
         <input type="number" id="hours"  onChange={this.handleTextChange} name="hours" placeholder="Hours" required />
       </div>
       <div className='buttonsModify'>

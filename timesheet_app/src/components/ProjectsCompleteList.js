@@ -10,11 +10,11 @@ class ProjectsCompleteList extends Component {
   constructor(props) {
     super(props)
 
-    console.log(props)
     this.props.authUser()
     if(this.props.loggedInUser) {
       this.props.onPopulateCompleteProjectList(this.props.loggedInUser)
   }
+      console.log(props)
 }
 
   componentWillReceiveProps(nextProps) {
@@ -45,7 +45,7 @@ render() {
 
   return (
     <div className='projectsListProj'>
-      <h1>Current Projects: </h1>
+      <h1>All Projects</h1>
       <table className="projectsProj">
       <thead>
         <tr className="tableHeaderProj">

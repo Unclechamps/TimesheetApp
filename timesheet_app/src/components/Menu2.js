@@ -2,7 +2,6 @@
 import React, {Component} from 'react'
 import '../index.css'
 import {Link} from 'react-router-dom'
-import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import * as actionCreators from '../store/actionCreators'
