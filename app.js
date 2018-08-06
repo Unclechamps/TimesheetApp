@@ -26,7 +26,7 @@ app.use(passportAuth.initialize());
 
 // Cross with react //
 
-app.use('/static',express.static(path.join(__dirname, 'timesheet_app/public')))
+app.use('/',express.static(path.join(__dirname, 'timesheet_app/public')))
 
 
 // CORS //
