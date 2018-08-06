@@ -1,1 +1,1 @@
-web: node app.js && cd timesheet_app npm start
+web: node app.js
