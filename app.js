@@ -408,9 +408,9 @@ app.post('/invoice', (req,res) => {
 // Server
 app.listen(PORT, () => console.log('I am listening on ${PORT}!'))
 //
-app.get("*", function(req, res, next) {
-    // if (!req.url.includes("api")) {
-        res.sendFile(path.join(__dirname, 'build', 'index.html'));
-    // }
-    return next()
-})
+// app.get("*", function(req, res, next) {
+//     // if (!req.url.includes("api")) {
+//         res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//     // }
+//     return next()
+// })

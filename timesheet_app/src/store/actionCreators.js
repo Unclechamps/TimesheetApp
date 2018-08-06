@@ -1,7 +1,9 @@
 
 import Cookies from 'universal-cookie'
+import axios from "axios"
 import * as actionTypes from './actionTypes'
 import * as actionCreators from './actionCreators'
+
 
 const cookies = new Cookies()
 
@@ -28,15 +30,10 @@ export const onAddUserUsingThunk = (user) => {
 
 export const onSignInUsingThunk = (user) => {
   return(dispatch) => {
-    fetch('https://timekeeper-app.herokuapp.com/login', {
-      method : 'POST',
-      headers : {
-        'Content-Type' : 'application/json',
-        'Accept' : 'application/json'
-      },
-      body: JSON.stringify(user)
+    axios.post('https://timekeeper-app.herokuapp.com/login', {
+
+      body: user
     })
-      .then(response => response.json())
       .then((json) => {
         console.log(json)
         if(json.token){
