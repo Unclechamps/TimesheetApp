@@ -27,14 +27,12 @@ app.use(passportAuth.initialize());
 
 // Cross with react //
 
-if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static(path.join(__dirname, './timesheet_app/build')))
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./timesheet_app/build/index.html"));
+    res.sendFile(path.join(__dirname, "/build/index.html"));
   });
-}
 
 // CORS //
 app.use(function(req, res, next) {
