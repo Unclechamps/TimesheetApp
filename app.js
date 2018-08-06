@@ -26,7 +26,7 @@ app.use(passportAuth.initialize());
 
 // Cross with react //
   app.use(express.static("timesheet_app/public"));
-  app.get("*", (req, res) => {
+  app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "timesheet_app", "public", "index.html"));
   });
 
