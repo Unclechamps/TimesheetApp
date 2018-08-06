@@ -8,7 +8,7 @@ const cookies = new Cookies()
 // ADD USER //
 export const onAddUserUsingThunk = (user) => {
   return(dispatch) => {
-    fetch('http://localhost:3001/add-user', {
+    fetch('http://localhost:5000/add-user', {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',
@@ -28,7 +28,7 @@ export const onAddUserUsingThunk = (user) => {
 
 export const onSignInUsingThunk = (user) => {
   return(dispatch) => {
-    fetch('http://localhost:3001/login', {
+    fetch('http://localhost:5000/login', {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',
@@ -60,7 +60,7 @@ export const authenticateUser = () => {
 
 
       if (token && user) {
-        fetch('http://localhost:3001/dashboard', {
+        fetch('http://localhost:5000/dashboard', {
           method : 'GET',
           headers : {
             'Content-Type' : 'application/json',
@@ -107,7 +107,7 @@ export const onAddClientUsingThunk = (client) => {
     client.userID = loggedInID
 
     cookies.get()
-    fetch('http://localhost:3001/addClient', {
+    fetch('http://localhost:5000/addClient', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -140,7 +140,7 @@ export const onDeleteClientUsingThunk = (client,user) => {
 
   console.log(deleteData)
   return (dispatch) => {
-    fetch('http://localhost:3001/deleteclient',{
+    fetch('http://localhost:5000/deleteclient',{
       method : 'DELETE',
       headers : {
         'Content-Type' : 'application/json',
@@ -170,7 +170,7 @@ export const displayClientErrors = (errors) => {
 export const onPopulateClientListUsingThunk = (user) => {
   console.log(user)
   return (dispatch) => {
-    fetch('http://localhost:3001/clientList', {
+    fetch('http://localhost:5000/clientList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -195,7 +195,7 @@ export const onAddProjectUsingThunk = (project) => {
 
     cookies.get()
 
-    fetch('http://localhost:3001/addProject', {
+    fetch('http://localhost:5000/addProject', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -227,7 +227,7 @@ export const onDeleteProjectUsingThunk = (project,client,user) => {
   }
 
   return (dispatch) => {
-    fetch('http://localhost:3001/deleteproject',{
+    fetch('http://localhost:5000/deleteproject',{
       method : 'DELETE',
       headers : {
         'Content-Type' : 'application/json',
@@ -261,7 +261,7 @@ export const onPopulateProjectListUsingThunk = (user, client) => {
     clientID : client
   }
   return (dispatch) => {
-    fetch('http://localhost:3001/projectList', {
+    fetch('http://localhost:5000/projectList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -281,7 +281,7 @@ export const onPopulateProjectListUsingThunk = (user, client) => {
 export const onPopulateCompleteProjectListUsingThunk = (user) => {
 
   return (dispatch) => {
-    fetch('http://localhost:3001/completeProjectList', {
+    fetch('http://localhost:5000/completeProjectList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -303,7 +303,7 @@ export const onPopulateCompleteProjectListUsingThunk = (user) => {
 
 export const onPopulateIndividualProjectUsingThunk = (project) => {
   return (dispatch) => {
-    fetch('http://localhost:3001/indiProject', {
+    fetch('http://localhost:5000/indiProject', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -333,7 +333,7 @@ export const onAddHoursUsingThunk = (hours, status, data) => {
   console.log(hoursToNode)
 
   return(dispatch) => {
-    fetch('http://localhost:3001/addHours', {
+    fetch('http://localhost:5000/addHours', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -362,7 +362,7 @@ export const onRemoveHoursUsingThunk = (hours, status, data) => {
   console.log(hoursToNode)
 
   return(dispatch) => {
-    fetch('http://localhost:3001/removeHours', {
+    fetch('http://localhost:5000/removeHours', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -387,7 +387,7 @@ export const onPopulateFinishedListUsingThunk = (user, client) => {
     clientID : client
     }
   return (dispatch) => {
-    fetch('http://localhost:3001/finishedList', {
+    fetch('http://localhost:5000/finishedList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -406,7 +406,7 @@ export const onPopulateFinishedListUsingThunk = (user, client) => {
 
 export const onPopulateInvoiceUsingThunk = (project) => {
   return (dispatch) => {
-    fetch('http://localhost:3001/invoice', {
+    fetch('http://localhost:5000/invoice', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -416,7 +416,7 @@ export const onPopulateInvoiceUsingThunk = (project) => {
     })
     .then(response => response.json())
     .then((json) => {
-      
+
       dispatch({type : actionTypes.POPULATE_INVOICE, invoice : json});
     })
   }

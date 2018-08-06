@@ -4,6 +4,23 @@ body {
 margin: 0;
 padding: 0;
 font-family: Raleway;
+position: relative;
+}
+
+/* Billboard */
+
+.billboard {
+    margin: 0px;
+    /* background-attachment: fixed; */
+    background-image: url(./images/desk.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    height: 670px;
+    z-index: -100;
+    transition: 0s linear;
+    background-position: 0 -100px;
 }
 
 /* Menu */
@@ -11,6 +28,7 @@ font-family: Raleway;
 .menu {
 display: flex;
 margin: auto 15px;
+font-size: 1.2em;
 }
 
 .logo {
@@ -39,8 +57,20 @@ font-weight: bold;
 
 /* Welcome page */
 
+.welcomePage {
+  display: flex;
+  flex-direction: column;
+}
+
 .welcomePage h1 {
   text-align: center;
+  padding-top: 20%;
+  padding-left: 7%;
+  font-size: 3em;
+}
+
+#timekeeper {
+  color: #48dbfb;
 }
 
 /* Sign Up */
