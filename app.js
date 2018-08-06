@@ -25,7 +25,7 @@ app.use(bodyParser.json())
 app.use(passportAuth.initialize());
 
 // Cross with react //
-app.use('/', express.static(__dirname + './timesheet_app/public'));
+app.use('/', express.static(__dirname + './timesheet_app/public/index.html'));
 
 // CORS //
 app.use(function(req, res, next) {
