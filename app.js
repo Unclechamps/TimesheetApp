@@ -28,7 +28,11 @@ app.use(passportAuth.initialize());
 // Cross with react //
 
   // Set static folder
+  app.use(express.static(path.join(__dirname, './timesheet_app/build')))
 
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
 
 // CORS //
@@ -401,19 +405,13 @@ app.post('/invoice', (req,res) => {
 
 // Server
 app.listen(PORT, () => console.log('I am listening on ${PORT}!'))
+
+
+//after all my routes//
+// if (process.env.NODE_ENV === "production") {
+// app.use(express.static(path.join(__dirname, './timesheet_app/build')))
 //
-// app.get("*", function(req, res, next) {
-//     // if (!req.url.includes("api")) {
-//         res.sendFile(path.join(__dirname, 'build', 'index.html'));
-//     // }
-//     return next()
-// })
-
-
-if (process.env.NODE_ENV === "production") {
-app.use(express.static(path.join(__dirname, './timesheet_app/build')))
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-}
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+// }
