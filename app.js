@@ -28,13 +28,7 @@ app.use(passportAuth.initialize());
 // Cross with react //
 
   // Set static folder
-  if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, './timesheet_app/build')))
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
-}
 
 
 // CORS //
@@ -414,3 +408,12 @@ app.listen(PORT, () => console.log('I am listening on ${PORT}!'))
 //     // }
 //     return next()
 // })
+
+
+if (process.env.NODE_ENV === "production") {
+app.use(express.static(path.join(__dirname, './timesheet_app/build')))
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+}
