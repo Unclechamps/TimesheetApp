@@ -30,7 +30,7 @@ app.use(passportAuth.initialize());
 if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static("timesheet_app/public"));
-  app.get("*", (req, res) => {
+  app.get("/*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "timesheet_app", "public", "index.html"));
   });
 }
