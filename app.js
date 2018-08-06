@@ -25,16 +25,6 @@ app.use(bodyParser.json())
 // Initializing JWT //
 app.use(passportAuth.initialize());
 
-// Cross with react //
-
-  // Set static folder
-  app.use(express.static(path.join(__dirname, './timesheet_app/build')))
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
-
-
 // CORS //
 app.all('*', function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -408,10 +398,10 @@ app.listen(PORT, () => console.log('I am listening on ${PORT}!'))
 
 
 //after all my routes//
-// if (process.env.NODE_ENV === "production") {
-// app.use(express.static(path.join(__dirname, './timesheet_app/build')))
-//
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-// }
+if (process.env.NODE_ENV === "production") {
+app.use(express.static(path.join(__dirname, './timesheet_app/build')))
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+}
