@@ -28,18 +28,20 @@ app.use(passportAuth.initialize());
 // Cross with react //
 
   // Set static folder
+  if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, './timesheet_app/build')))
 
-  // app.get("*", (req, res) => {
-  //   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  // });
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+}
 
 
 // CORS //
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+app.all('*', function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
 

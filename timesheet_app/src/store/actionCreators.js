@@ -28,7 +28,7 @@ export const onAddUserUsingThunk = (user) => {
 
 export const onSignInUsingThunk = (user) => {
   return(dispatch) => {
-    fetch('https://timekeeper-app.herokuapp.com/login',  {
+    fetch('https://timekeeper-app.herokuapp.com/login', {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',
