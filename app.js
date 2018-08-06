@@ -29,7 +29,6 @@ app.use(passportAuth.initialize());
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "timesheet_app", "public", "index.html"));
   });
-}
 
 // CORS //
 app.use(function(req, res, next) {
