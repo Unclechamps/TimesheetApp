@@ -26,8 +26,12 @@ app.use(passportAuth.initialize());
 
 // Cross with react //
 
-app.use('/',express.static(path.join(__dirname, 'timesheet_app/public')))
-
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static("timesheet_app/public"));
+  app.get("/*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "timesheet_app", "public", "index.html"));
+  });
+}
 
 // CORS //
 app.use(function(req, res, next) {
