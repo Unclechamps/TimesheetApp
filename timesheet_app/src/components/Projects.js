@@ -53,7 +53,7 @@ class Project extends Component {
 
       <div>
       <h1 className="projectTitle">Projects for {this.props.match.params.clientName}</h1>
-      <h3 className="addProjectTitle">Add New Projects for </h3>
+      <h3 className="addProjectTitle">Add New Projects for {this.props.match.params.clientName}</h3>
       <div className = "projectForm">
       <div>
         <label>Project Name: </label>

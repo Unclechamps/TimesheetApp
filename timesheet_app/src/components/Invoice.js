@@ -47,31 +47,40 @@ class Invoice extends Component {
 
     return (
 
-      this.props.loggedInUser? <div>
+      this.props.loggedInUser? <div className='invoice'>
+      <h1 id='invoiceTitle'>INVOICE</h1>
       <div className="invoiceTitle">
       <h2>Invoice # {match.params.projectID}</h2>
       <p>Date: {today}</p>
       </div>
-      <div>
-        <h4>BILL TO: <span className="billText">{match.params.clientName}</span></h4>
-        <h4>FROM: <span className="billText">{loggedInUser.name}</span></h4>
+      <div className="fromTo">
+        <div id='billTo'>
+          <h4>BILL TO: <span className="billText">{match.params.clientName}</span></h4>
+        </div>
+        <div id='fromFrom'>
+          <h4>FROM: <span className="billText">{loggedInUser.name}</span></h4>
+        </div>
+      </div>
+        <hr/>
+      <div className="projectInvDesc">
+        <div className="invoiceItems">
+          <h4>INVOICE ITEMS</h4>
+          <h4>{invoice.projectName} </h4>
+          <p>{invoice.projectDesc} </p>
+        </div>
+        <div className="amount">
+          <h4>AMOUNT</h4>
+          <p>${invoice.totalBill}</p>
+        </div>
       </div>
         <hr/>
       <div>
-        <h4>INVOICE ITEMS</h4>
-        <p>{invoice.projectName} </p>
-        <p>{invoice.projectDesc} </p>
+      <div className='totalInvoice'>
+        <p id='totalTotal'>Total: </p>
+        <p id='totalTotalBill'>${invoice.totalBill}</p>
       </div>
-      <div>
-        <h4>AMOUNT</h4>
-        <p>${invoice.totalBill}</p>
       </div>
-        <hr/>
-      <div>
-        <p>Total:</p>
-        <p>{invoice.totalBill}</p>
-      </div>
-      <div>
+      <div className='invoiceMessage'>
         <h4>MESSAGE</h4>
         <p>Thank you for your business.</p>
       </div>

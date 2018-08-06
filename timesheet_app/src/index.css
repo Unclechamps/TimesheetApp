@@ -17,7 +17,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  height: 670px;
+  height: 100vh;
   z-index: -100;
   transition: 0s linear;
   background-position: 0 -100px;
@@ -27,8 +27,15 @@ body {
 
 .menu {
   display: flex;
-  margin: auto 15px;
+  margin: auto;
+  padding-left: 10px;
   font-size: 1.2em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  background-color: #fff;
   }
 
 .logo {
@@ -64,7 +71,7 @@ body {
 
 .welcomePage h1 {
   text-align: center;
-  padding-top: 16%;
+  padding-top: 20%;
   padding-left: 7%;
   font-size: 3em;
 }
@@ -185,7 +192,7 @@ text-align: center;
 display: flex;
 flex-direction: column;
 width: 50%;
-margin: 10px auto;
+margin: 160px auto;
 align-items: center;
 }
 
@@ -217,7 +224,7 @@ align-items: center;
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin: 10px auto;
+  margin: 200px auto;
   align-items: center;
 }
 
@@ -259,6 +266,7 @@ align-items: center;
 /* Dashboard */
 
 .dashboard {
+  padding-top: 100px;
   width: 70%;
   margin: auto;
   display: flex;
@@ -504,11 +512,91 @@ hr {
   border: 0;
   height: 1px;
   background: #333;
-  width: 15%;
-  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  width: 95%;
+  /* background-image: linear-gradient(to right, #ccc, #333, #ccc); */
 
 }
 
 .status {
   margin-bottom: 15px;
+}
+
+/* INVOICE */
+
+.invoice {
+  padding-top: 85px;
+}
+
+#invoiceTitle {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.invoiceTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 15%;
+  margin-left: auto;
+}
+
+.invoiceTitle h2 {
+  margin-bottom: 0px;
+}
+
+.fromTo {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+#billTo {
+  margin-left: 15px;
+  width: 85%;
+}
+
+#fromFrom {
+  margin-left: auto;
+  width: 15%;
+}
+
+.projectInvDesc {
+  display: flex;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.invoiceItems {
+  margin-left: 15px;
+  width: 85%;
+}
+
+.amount {
+  margin-left: auto;
+  width: 15%;
+}
+
+.amount p {
+  text-align:
+}
+
+.totalInvoice {
+  display: flex;
+  margin-left: auto;
+}
+
+#totalTotal {
+  font-weight: bold;
+  margin-right: 15px;
+  width: 85%;
+  text-align: right;
+}
+
+#totalTotalBill {
+  width: 15%;
+}
+
+.invoiceMessage {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
 }
