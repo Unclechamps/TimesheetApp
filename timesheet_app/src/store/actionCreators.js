@@ -28,7 +28,7 @@ export const onAddUserUsingThunk = (user) => {
 
 export const onSignInUsingThunk = (user) => {
   return(dispatch) => {
-    fetch('http://localhost:5000/login', {
+    fetch('/login', {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',

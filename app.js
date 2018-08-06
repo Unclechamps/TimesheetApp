@@ -34,6 +34,7 @@ app.use(passportAuth.initialize());
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
 
+
 // CORS //
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -404,3 +405,10 @@ app.post('/invoice', (req,res) => {
 
 // Server
 app.listen(PORT, () => console.log('I am listening on ${PORT}!'))
+//
+// app.get("*", function(req, res, next) {
+//     if (!req.url.includes("api")) {
+//         res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//     }
+//     return next()
+// })
