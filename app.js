@@ -31,7 +31,7 @@ app.use(passportAuth.initialize());
   app.use(express.static(path.join(__dirname, './timesheet_app/build')))
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/build/index.html"));
+    res.sendFile(path.join(__dirname, "/index.html"));
   });
 
 // CORS //
