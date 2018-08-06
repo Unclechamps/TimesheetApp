@@ -8,7 +8,7 @@ const cookies = new Cookies()
 // ADD USER //
 export const onAddUserUsingThunk = (user) => {
   return(dispatch) => {
-    fetch('/add-user', {
+    fetch('https://timekeeper-app.herokuapp.com/add-user', {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',
@@ -28,7 +28,7 @@ export const onAddUserUsingThunk = (user) => {
 
 export const onSignInUsingThunk = (user) => {
   return(dispatch) => {
-    fetch('/login', {
+    fetch('https://timekeeper-app.herokuapp.com/login', {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',
@@ -60,7 +60,7 @@ export const authenticateUser = () => {
 
 
       if (token && user) {
-        fetch('/dashboard', {
+        fetch('https://timekeeper-app.herokuapp.com/dashboard', {
           method : 'GET',
           headers : {
             'Content-Type' : 'application/json',
@@ -107,7 +107,7 @@ export const onAddClientUsingThunk = (client) => {
     client.userID = loggedInID
 
     cookies.get()
-    fetch('/addClient', {
+    fetch('https://timekeeper-app.herokuapp.com/addClient', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -140,7 +140,7 @@ export const onDeleteClientUsingThunk = (client,user) => {
 
   console.log(deleteData)
   return (dispatch) => {
-    fetch('/deleteclient',{
+    fetch('https://timekeeper-app.herokuapp.com/deleteclient',{
       method : 'DELETE',
       headers : {
         'Content-Type' : 'application/json',
@@ -170,7 +170,7 @@ export const displayClientErrors = (errors) => {
 export const onPopulateClientListUsingThunk = (user) => {
   console.log(user)
   return (dispatch) => {
-    fetch('/clientList', {
+    fetch('https://timekeeper-app.herokuapp.com/clientList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -195,7 +195,7 @@ export const onAddProjectUsingThunk = (project) => {
 
     cookies.get()
 
-    fetch('/addProject', {
+    fetch('https://timekeeper-app.herokuapp.com/addProject', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -227,7 +227,7 @@ export const onDeleteProjectUsingThunk = (project,client,user) => {
   }
 
   return (dispatch) => {
-    fetch('/deleteproject',{
+    fetch('https://timekeeper-app.herokuapp.com/deleteproject',{
       method : 'DELETE',
       headers : {
         'Content-Type' : 'application/json',
@@ -261,7 +261,7 @@ export const onPopulateProjectListUsingThunk = (user, client) => {
     clientID : client
   }
   return (dispatch) => {
-    fetch('/projectList', {
+    fetch('https://timekeeper-app.herokuapp.com/projectList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -281,7 +281,7 @@ export const onPopulateProjectListUsingThunk = (user, client) => {
 export const onPopulateCompleteProjectListUsingThunk = (user) => {
 
   return (dispatch) => {
-    fetch('/completeProjectList', {
+    fetch('https://timekeeper-app.herokuapp.com/completeProjectList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -303,7 +303,7 @@ export const onPopulateCompleteProjectListUsingThunk = (user) => {
 
 export const onPopulateIndividualProjectUsingThunk = (project) => {
   return (dispatch) => {
-    fetch('/indiProject', {
+    fetch('https://timekeeper-app.herokuapp.com/indiProject', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -333,7 +333,7 @@ export const onAddHoursUsingThunk = (hours, status, data) => {
   console.log(hoursToNode)
 
   return(dispatch) => {
-    fetch('/addHours', {
+    fetch('https://timekeeper-app.herokuapp.com/addHours', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -362,7 +362,7 @@ export const onRemoveHoursUsingThunk = (hours, status, data) => {
   console.log(hoursToNode)
 
   return(dispatch) => {
-    fetch('/removeHours', {
+    fetch('https://timekeeper-app.herokuapp.com/removeHours', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -387,7 +387,7 @@ export const onPopulateFinishedListUsingThunk = (user, client) => {
     clientID : client
     }
   return (dispatch) => {
-    fetch('/finishedList', {
+    fetch('https://timekeeper-app.herokuapp.com/finishedList', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
@@ -406,7 +406,7 @@ export const onPopulateFinishedListUsingThunk = (user, client) => {
 
 export const onPopulateInvoiceUsingThunk = (project) => {
   return (dispatch) => {
-    fetch('/invoice', {
+    fetch('https://timekeeper-app.herokuapp.com/invoice', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json',
