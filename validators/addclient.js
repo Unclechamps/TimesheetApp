@@ -29,4 +29,4 @@ module.exports = function validateClientInput(data) {
     errors,
     isValid: isEmpty(errors)
   };
-};
+}; 
