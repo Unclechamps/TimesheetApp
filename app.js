@@ -8,6 +8,7 @@ const keys = require('./config/keys')
 const passportAuth = require('./passport')()
 const jwt = require('jsonwebtoken')
 const PORT = process.env.PORT || 5000
+const path = require("path")
 
 let models = require('./models')
 
@@ -26,11 +27,13 @@ app.use(passportAuth.initialize());
 
 // Cross with react //
 
-  app.use(express.static(path.join(__dirname, "timesheet_app/public")));
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "timesheet_app", "public", "index.html"));
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("timesheet_app/public"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "timesheet_app", "public", "index.html"));
   });
+}
 
 // CORS //
 app.use(function(req, res, next) {
