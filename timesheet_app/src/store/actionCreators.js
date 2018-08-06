@@ -30,10 +30,15 @@ export const onAddUserUsingThunk = (user) => {
 
 export const onSignInUsingThunk = (user) => {
   return(dispatch) => {
-    axios.post('https://timekeeper-app.herokuapp.com/login', {
-
-      body: user
+    fetch('https://timekeeper-app.herokuapp.com/login', {
+      method : 'POST',
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body: JSON.stringify(user)
     })
+      .then(response => response.json())
       .then((json) => {
         console.log(json)
         if(json.token){
