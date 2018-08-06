@@ -22,10 +22,10 @@ app.use(bodyParser.urlencoded({ extended : false }))
 app.use(bodyParser.json())
 
 // Initializing JWT //
-app.use(passportAuth.initialize()); 
+app.use(passportAuth.initialize());
 
 // Cross with react //
-app.use('/', express.static(__dirname + '../timesheet_app/public'));
+app.use('/', express.static(__dirname + './timesheet_app/public'));
 
 // CORS //
 app.use(function(req, res, next) {
