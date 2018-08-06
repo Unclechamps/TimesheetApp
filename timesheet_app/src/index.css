@@ -11,7 +11,7 @@ body {
 
 .billboard {
   margin: 0px;
-  /* background-attachment: fixed; */
+  background-attachment: fixed;
   background-image: url(./images/desk.jpg);
   background-position: center;
   background-size: cover;
@@ -72,6 +72,107 @@ body {
 #timekeeper {
   color: #48dbfb;
 }
+
+.keyFeatures h2 {
+  text-align: center;
+}
+
+.blurb {
+  width: 70%;
+  text-align: justify;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.blurb p {
+  font-size: 1.7em;
+  line-height: 1.3em;
+}
+
+.keyFeatures {
+    /* background-color: #dfe6e9; */
+    padding: 30px 0;
+}
+
+.keyFeatures h2 {
+  font-size: 2em;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  font-size: 4em;
+  width: 80%;
+  margin: 19px auto;
+}
+
+.icons div {
+  width: 33.3%;
+  text-align: center;
+  margin-top: 19px;
+}
+
+.copyOfIcons {
+  display: flex;
+  justify-content: center;
+  font-size: 1.7em;
+  width: 80%;
+  margin: 13px auto;
+}
+
+.copyOfIcons p {
+  width: 33.3%;
+  text-align: center;
+}
+
+.pricing {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: center;
+  margin:auto;
+  padding: 20px 0 30px 0;
+}
+
+.pricingTitle {
+  font-size: 2em;
+  text-align: center;
+}
+
+.free, .limited, .unlimited {
+  width: 33.3%;
+  text-align: center;
+  margin-bottom: 13px;
+}
+
+.welcomePage hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  width: 70%;
+  background-image: linear-gradient(to right, #fff, orange, #fff);
+}
+
+.selectbtn {
+    height: 40px;
+    width: 100px;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 13px;
+    background-color: inherit;
+    transition: .5s ease;
+}
+
+.selectbtn:hover{
+  background-color: orange;
+  border: none;
+  color: white;
+}
+
+.footer {
+  text-align: center;
+}
+
 
 /* Sign Up */
 

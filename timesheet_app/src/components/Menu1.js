@@ -19,7 +19,6 @@ render() {
         <div><Link to ="/sign-in">Sign In</Link></div>
         <div><Link to ="/dashboard">Dashboard</Link></div>
         <div><Link to = "/contact-us">Contact Us</Link></div>
-        <div><Link to ="/sign-in" onClick={() => this.props.onLogOut()}>Log Out</Link></div>
       </div>
     </div>
     );

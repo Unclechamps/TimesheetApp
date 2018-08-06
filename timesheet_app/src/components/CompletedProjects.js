@@ -45,7 +45,6 @@ render() {
         <td className='totalToBeInvoiced'>${completed.totalBill}</td>
         <td className='status'>{completed.Status}</td>
         <td><Link to={newParams}>Invoice</Link></td>
-        <td><button onClick={() => this.props.onDeleteProject(completed.id, completed.clientID,this.props.loggedInUser)}>Delete</button></td>
       </tr>
     )
   })
@@ -64,7 +63,6 @@ render() {
           <th>Total for project</th>
           <th>Status</th>
           <th>Update</th>
-          <th>Delete</th>
         </tr>
         </thead>
         <tbody>
