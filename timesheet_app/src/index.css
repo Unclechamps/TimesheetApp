@@ -686,6 +686,12 @@ hr {
   .blurb {
     font-size: .85em;
     text-align: center;
+    margin: 20px auto 20px auto;
+    padding: 0
+  }
+
+  .blurb p {
+    margin: 0 auto;
   }
 
   .indiIcons {
@@ -698,6 +704,7 @@ hr {
     height: 100vh;
     margin: auto;
     /* background-attachment: fixed; */
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     z-index: -100;
