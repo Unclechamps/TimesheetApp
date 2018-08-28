@@ -622,7 +622,7 @@ hr {
   background-attachment: fixed;
   background-image: url(./images/desk2.jpg);
   background-position: center;
-  background-size: cover;
+  /* background-size: cover; */
   background-repeat: no-repeat;
   color: white;
   z-index: -100;
@@ -668,6 +668,7 @@ hr {
 
 .welcomePage h1 {
   padding-top: 30%;
+  padding-bottom: 20%;
   padding-left: auto;
   padding-right: auto;
 }
