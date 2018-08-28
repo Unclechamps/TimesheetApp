@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react'
 import '../index.css'
+import '../queries.css'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faUser, faFileAlt } from '@fortawesome/free-solid-svg-icons'
@@ -20,15 +21,19 @@ export class Home extends Component {
       <div className='keyFeatures'>
         <h2>Key Features</h2>
         <div className='icons'>
-          <div><FontAwesomeIcon icon={faClock} /></div>
-          <div><FontAwesomeIcon icon={faUser} /></div>
-          <div><FontAwesomeIcon icon={faFileAlt} /></div>
-        </div>
-        <div className='copyOfIcons'>
-          <p>Keep track of projects. New, ongoing, or completed.</p>
-          <p>Add new clients to your portfolio.</p>
-          <p>Create, manage and send invoices directly to clients.</p>
-        </div>
+          <div className="indiIcons">
+            <div><FontAwesomeIcon icon={faClock} /></div>
+            <p>Keep track of projects. New, ongoing, or completed.</p>
+          </div>
+          <div className="indiIcons">
+            <div><FontAwesomeIcon icon={faUser} /></div>
+            <p>Add new clients to your portfolio.</p>
+          </div>
+          <div className="indiIcons">
+            <div><FontAwesomeIcon icon={faFileAlt} /></div>
+            <p>Create, manage and send invoices directly to clients.</p>
+          </div>
+          </div>
         </div>
         <hr/>
           <h2 className='pricingTitle'>Pricing options</h2>

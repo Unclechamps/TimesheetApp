@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import '../index.css'
 import {connect} from 'react-redux'
 import AddClientError from './AddClientError'
+import '../queries.css'
 import ClientList from './ClientList'
 
 

@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react'
 import '../index.css'
+import '../queries.css'
 import { connect } from 'react-redux'
 import Cookies from 'universal-cookie'
 import { Link } from 'react-router-dom'

@@ -6,6 +6,7 @@ import AddProjectError from './AddProjectError'
 import ProjectsList from './ProjectsList'
 import CompletedProjects from './CompletedProjects'
 import Cookies from 'universal-cookie'
+import '../queries.css'
 import * as actionCreators from '../store/actionCreators'
 
 const cookies = new Cookies()

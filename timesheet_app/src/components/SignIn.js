@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react'
 import '../index.css'
+import '../queries.css'
 import {connect} from 'react-redux'
 import SignInError from './SignInError'
 

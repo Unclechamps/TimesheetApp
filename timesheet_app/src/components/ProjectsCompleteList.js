@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import '../index.css'
 import { connect } from 'react-redux'
 import Cookies from 'universal-cookie'
+import '../queries.css'
 
 import * as actionCreators from '../store/actionCreators'
 

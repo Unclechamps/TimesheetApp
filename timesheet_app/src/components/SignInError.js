@@ -1,5 +1,6 @@
 
 import React, {Component} from 'react'
+import '../queries.css'
 import '../index.css'
 import {connect} from 'react-redux'
 

@@ -3,6 +3,7 @@ import '../index.css'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Cookies from 'universal-cookie'
+import '../queries.css'
 
 import * as actionCreators from '../store/actionCreators'
 

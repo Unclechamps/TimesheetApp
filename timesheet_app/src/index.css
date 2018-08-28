@@ -24,23 +24,40 @@ body {
 }
 
 /* Menu */
-
-.menu {
+.menuOverall {
   display: flex;
-  margin: auto;
-  padding-left: 10px;
-  font-size: 1.2em;
+  line-height: 40px;
+  z-index: 1030;
+  background-color: #fff;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1030;
-  background-color: #fff;
-  }
+  font-size: 1.2em;
+}
+
+.nav label {
+  margin: 0 40px 0 0;
+  font-size: 26px;
+  width: 26px;
+  display: none;
+}
+
+#toggle {
+  display: none;
+}
+
+.nav {
+  display: flex;
+  width: 80%;
+  margin: 20px 0 20px auto;
+  padding-left: 10px;
+}
 
 .logo {
   font-size: 1.3em;
   margin-right: 15px;
+  margin-left: 5px;
 }
 
 .links {
@@ -56,6 +73,7 @@ body {
 .links a {
   text-decoration: none;
   color: inherit;
+  clear: right;
 }
 
 .active {
@@ -108,28 +126,22 @@ body {
 .icons {
   display: flex;
   justify-content: center;
-  font-size: 4em;
-  width: 80%;
+  width: 90%;
   margin: 19px auto;
 }
 
-.icons div {
+.indiIcons {
   width: 33.3%;
   text-align: center;
   margin-top: 19px;
 }
 
-.copyOfIcons {
-  display: flex;
-  justify-content: center;
-  font-size: 1.7em;
-  width: 80%;
-  margin: 13px auto;
+.indiIcons p {
+  font-size: 1.3em;
 }
 
-.copyOfIcons p {
-  width: 33.3%;
-  text-align: center;
+.indiIcons div {
+  font-size: 4em;
 }
 
 .pricing {

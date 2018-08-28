@@ -4,6 +4,7 @@ import '../index.css'
 import { connect } from 'react-redux'
 import Cookies from 'universal-cookie'
 import AddHours from './AddHours'
+import '../queries.css'
 
 import * as actionCreators from '../store/actionCreators'
 
