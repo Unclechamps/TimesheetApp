@@ -695,7 +695,7 @@ hr {
 
   .billboard {
     background: url(./images/desk2.jpg) no-repeat center center fixed;
-    width: 100vh;
+    width: auto;
     height: 100%;
     /* margin: 0px;
     background-attachment: fixed;
