@@ -197,6 +197,7 @@ body {
 
 .suTitle {
 text-align: center;
+margin-top: 150px;
 
 }
 
@@ -204,7 +205,7 @@ text-align: center;
 display: flex;
 flex-direction: column;
 width: 50%;
-margin: 160px auto;
+margin: 80px auto;
 align-items: center;
 }
 
@@ -229,6 +230,7 @@ align-items: center;
 
 .siTitle {
   text-align: center;
+  margin-top: 150px;
 
 }
 
@@ -236,7 +238,7 @@ align-items: center;
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin: 200px auto;
+  margin: 100px auto;
   align-items: center;
 }
 
@@ -710,6 +712,34 @@ hr {
     z-index: -100;
   }
 
+  .signInForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 100px auto;
+    align-items: center;
+  }
+
+  .signInForm div {
+     width: 100%;
+  }
+
+  .signInForm label {
+      padding-bottom: 8px;
+  }
+
+  .signInForm input {
+      width: 70%;
+  }
+
+  .signUpForm {
+  width: 90%;
+  }
+
+
+  .signUpForm input {
+    width: 70%;
+  }
 
 
 }
