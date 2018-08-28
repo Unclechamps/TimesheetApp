@@ -712,34 +712,48 @@ hr {
     z-index: -100;
   }
 
+  /* Sign In */
+
   .signInForm {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    margin: 100px auto;
-    align-items: center;
   }
 
   .signInForm div {
      width: 100%;
   }
 
-  .signInForm label {
-      padding-bottom: 8px;
-  }
-
   .signInForm input {
       width: 70%;
   }
+
+  /* Sign up */
 
   .signUpForm {
   width: 90%;
   }
 
-
   .signUpForm input {
     width: 70%;
   }
 
+  /* Dashboard */
+
+  .dashboard {
+    width: 80%;
+  }
+
+  .dashOptions button {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: center;
+    align-content: center;
+    padding-top: 3px;
+  }
+
+  .dashOptions a {
+    text-decoration: none;
+    color: black;
+  }
 
 }
