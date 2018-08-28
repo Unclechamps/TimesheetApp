@@ -630,6 +630,7 @@ hr {
   z-index: -100;
   transition: 0s linear;
   background-position: 0 -100px; */
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .nav label {
