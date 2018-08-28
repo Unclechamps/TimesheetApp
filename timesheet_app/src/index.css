@@ -678,7 +678,7 @@ hr {
 
 @media only screen and (max-width: 576px) {
   .welcomePage h1 {
-    padding-top: 30%;
+    padding-top: 60%;
     padding-bottom: 20%;
     padding-left: auto;
     padding-right: auto;
@@ -699,14 +699,10 @@ hr {
     height: 100vh;
     margin: auto;
     /* background-attachment: fixed; */
-    /* background-image: url(./images/desk2.jpg); */
+    background-size: auto;
     background-position: center center;
-    /* background-size: cover; */
-    /* overflow: hidden; */
     background-repeat: no-repeat;
-    /* color: white; */
     z-index: -100;
-    /* transition: 0s linear; */
   }
 
 
