@@ -615,23 +615,6 @@ hr {
 
 @media only screen and (max-width: 768px) {
 
-.billboard {
-  background: url(./images/desk2.jpg) no-repeat center center fixed;
-  /* width: 100vw; */
-  height: 100%;
-  /* margin: 0px;
-  background-attachment: fixed;
-  background-image: url(./images/desk2.jpg);
-  background-position: center; */
-  background-size: cover;
-  overflow: hidden;
-  /* background-repeat: no-repeat;
-  color: white;
-  z-index: -100;
-  transition: 0s linear;
-  background-position: 0 -100px; */
-  image-rendering: -webkit-optimize-contrast;
-}
 
 .nav label {
   display: block;
@@ -709,5 +692,24 @@ hr {
   .indiIcons {
     width: 80%;
   }
+
+  .billboard {
+    background: url(./images/desk2.jpg) no-repeat center center fixed;
+    width: 100vh;
+    height: 100%;
+    /* margin: 0px;
+    background-attachment: fixed;
+    background-image: url(./images/desk2.jpg);
+    background-position: center; */
+    background-size: cover;
+    overflow: hidden;
+    /* background-repeat: no-repeat;
+    color: white;
+    z-index: -100;
+    transition: 0s linear;
+    background-position: 0 -100px; */
+  }
+
+
 
 }
