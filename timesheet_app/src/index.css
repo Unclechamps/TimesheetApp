@@ -677,7 +677,7 @@ hr {
 }
 
 @media only screen and (max-width: 576px) {
-  .welcomePage h1 {
+  .billboard h1 {
     padding-top: 60%;
     padding-bottom: 20%;
     padding-left: auto;
@@ -699,7 +699,7 @@ hr {
     height: 100vh;
     margin: auto;
     /* background-attachment: fixed; */
-    background-size: auto;
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     z-index: -100;
